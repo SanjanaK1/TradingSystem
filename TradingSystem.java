@@ -1,4 +1,3 @@
-public class TradingSystem
-{
+public class TradingSystem {
 
 }
