@@ -1,8 +1,12 @@
+package src;
+
+import java.util.Map;
+
 public class Portfolio {
 
-    public Map<int, int> getStockList() {
-        return this.stockList;
+    public Map<Integer, Integer> getStockList() {
+//        return this.stockList;
+        return null;
     }
 
-    public
 }

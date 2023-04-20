@@ -1,3 +1,7 @@
+package src;
+
+import src.LoginWindow;
+
 public class TradingSystem {
 
     public static void main(String args[]){
