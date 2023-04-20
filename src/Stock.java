@@ -1,5 +1,6 @@
 public class Stock {
 
-    //price attribute
-    // tradable attribute
+    double price;
+    String name;
+    boolean tradable;
 }
