@@ -9,7 +9,9 @@ public class LoginWindow extends JFrame implements ActionListener {
     }
     private void initComponents(){
         JTextField userTextField = new JTextField(25);
+        userTextField.setMinimumSize(new java.awt.Dimension(100, 20));
         JTextField passwordTextField = new JPasswordField(25);
+        passwordTextField.setMinimumSize(new java.awt.Dimension(100, 20));
         JButton loginButton = new JButton("Log In");//creating instance of JButton
         JLabel userLabel = new JLabel("Username:");
         JLabel pwLabel = new JLabel("Password:");
