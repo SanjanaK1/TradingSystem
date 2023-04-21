@@ -70,7 +70,7 @@ public class LoginWindow extends JFrame implements ActionListener {
         loginInPM.setBounds(230,350,250, 40);//x axis, y axis, width, height
         f.add(loginInPM);
 
-        f.setSize(800,700);
+        f.setSize(1000,700);
         f.setLayout(null);//using no layout managers
         f.setVisible(true);//making the frame visible
 
