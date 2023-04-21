@@ -16,7 +16,6 @@ public class LoginWindow extends JFrame implements ActionListener {
         JLabel loginInPMLabel = new JLabel("Password");
 
 
-
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
 
