@@ -6,4 +6,8 @@ public interface Trade {
     //withdraw
     //calculate
 
+    //what should the trade class do ?
+
+
+
 }
