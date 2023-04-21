@@ -10,58 +10,55 @@ public class LoginWindow extends JFrame implements ActionListener {
         initComponents();
     }
     private void initComponents(){
-        JButton loginInUser = new JButton("Log In as User");//creating instance of JButton
-        JLabel loginInUserLabel = new JLabel("User");
-        JButton loginInPM = new JButton("Log In as Portfolio Manager");
-        JLabel loginInPMLabel = new JLabel("Password");
-
-
+        JTextField userTextField = new JTextField(25);
+        JTextField passwordTextField = new JPasswordField(25);
+        JButton loginButton = new JButton("Log In");//creating instance of JButton
+        JLabel userLabel = new JLabel("Username:");
+        JLabel pwLabel = new JLabel("Password:");
+        ImageIcon loginIcon = IconCreator.createImageIcon("Heptakaidecahedron_example.gif", "Heptakaidecahedron example");
+        JLabel iconLabel = new JLabel("This is the login screen", loginIcon, JLabel.CENTER);
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
 
+        layout.setAutoCreateGaps(true);
+
         layout.setHorizontalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(loginInUser, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(loginInUserLabel))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(loginInPM)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(loginInPMLabel)))
-                                .addContainerGap(27, Short.MAX_VALUE))
+                layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addComponent(userLabel)
+                                .addComponent(pwLabel))
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addComponent(userTextField)
+                                .addComponent(passwordTextField))
+                        .addComponent(loginButton)
+                        .addComponent(iconLabel)
+                        .addContainerGap()
         );
 
-        layout.linkSize(SwingConstants.HORIZONTAL, loginInUser, loginInPM);
+        layout.linkSize(SwingConstants.VERTICAL, userLabel, userTextField);
+        layout.linkSize(SwingConstants.VERTICAL, pwLabel, passwordTextField);
 
         layout.setVerticalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(loginInUser, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(loginInUserLabel))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(loginInPM)
-                                        .addComponent(loginInPMLabel))
-                                .addContainerGap(21, Short.MAX_VALUE))
+                layout.createSequentialGroup()
+                        .addComponent(iconLabel)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(userLabel)
+                                        .addComponent(pwLabel))
+                                .addGroup(layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(userTextField)
+                                        .addComponent(passwordTextField))
+                                .addGroup(layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(loginButton)))
         );
         pack();
-//
-//        loginInUser.setBounds(250,300,200, 40);//x axis, y axis, width, height
-//        add(loginInUser);
-//
-//        loginInPM.setBounds(230,350,250, 40);//x axis, y axis, width, height
-//        add(loginInPM);
 
-        setSize(700,700);
-        setLayout(null);//using no layout managers
-        setVisible(true);//making the frame visible
+        setSize(700,500);
     }
 
     public void createWindow(){
@@ -75,7 +72,7 @@ public class LoginWindow extends JFrame implements ActionListener {
         loginInPM.setBounds(230,350,250, 40);//x axis, y axis, width, height
         f.add(loginInPM);
 
-        f.setSize(700,700);
+        f.setSize(800,700);
         f.setLayout(null);//using no layout managers
         f.setVisible(true);//making the frame visible
 
