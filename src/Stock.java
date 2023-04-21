@@ -1,5 +1,3 @@
-package src.src;
-
 public class Stock implements Tradeable{
 
     private double boughtPrice;

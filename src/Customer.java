@@ -1,5 +1,3 @@
-package src.src;
-
 public class Customer {
 
     private boolean approved = false ; //0 = not approved

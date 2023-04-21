@@ -1,5 +1,3 @@
-package src;
-
 public interface Trade {
 
     //deposit

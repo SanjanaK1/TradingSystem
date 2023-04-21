@@ -1,5 +1,3 @@
-package src;
-
 import src.LoginWindow;
 
 import src.LoginWindow;
