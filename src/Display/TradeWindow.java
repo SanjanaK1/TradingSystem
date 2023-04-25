@@ -1,2 +1,4 @@
-public class TradeWindow {
+import javax.swing.*;
+
+public class TradeWindow extends JFrame {
 }
