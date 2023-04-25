@@ -1,19 +1,41 @@
 //observer pattern
 //singleton pattern
 
-import java.util.ArrayList;
+
+// Class implements singleton pattern.
+
+import java.util.*;
 
 public class PortfolioManager {
-    ArrayList<Customer> customerList = new ArrayList<Customer>();
 
+    private double approvalThreshold;
+    private List<Customer> customerList = new ArrayList<>();
+    private static PortfolioManager instance;
 
+    private PortfolioManager() {
 
-    public boolean approveCustomer()
-    {
-        return false;
     }
 
-    //factory pattern
-    //she wants to see composite and decorator
+    public static PortfolioManager getPortfolioManagerInstance() {
+        if (instance == null) {
+            instance = new PortfolioManager();
+        }
+        return instance;
+    }
+
+    public boolean approveCustomer(Customer c) {
+        boolean isApproved = false;
+        try {
+            if (c.getMoney() >= approvalThreshold) {
+                isApproved = true;
+            }
+            c.setApproved(isApproved);
+            return isApproved;
+
+        } catch (Exception e) {
+            return isApproved;
+        }
+    }
+
 
 }
