@@ -1,4 +1,4 @@
-public class Customer {
+public class Customer implements Tradeable {
 
     private boolean approved = false ; //0 = not approved
     private double money;
@@ -57,6 +57,12 @@ public class Customer {
             setMoney(netChange);
             sold = true;
         }
+
+        //calculate realized gains here
+        
+
+
+
         return sold;
     }
 }

@@ -43,10 +43,6 @@ public class Portfolio {
         }
     }
 
-    public double getRealizedAmount(Stock s) {
-        //TODO
-        return 0;
-    }
 
     public double getUnrealizedAmount(Stock s) {
         //TODO
