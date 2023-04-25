@@ -6,19 +6,21 @@
 
 import java.util.*;
 
-public class PortfolioManager {
+public class PortfolioManager extends Person{
 
     private double approvalThreshold;
     private List<Customer> customerList = new ArrayList<>();
     private static PortfolioManager instance;
 
-    private PortfolioManager() {
-
+    private PortfolioManager(String name, double approvalThreshold, List<Customer> customerList) {
+        super(name);
+        setApprovalThreshold(approvalThreshold);
+        setCustomerList(customerList);
     }
 
     public static PortfolioManager getPortfolioManagerInstance() {
         if (instance == null) {
-            instance = new PortfolioManager();
+            instance = new PortfolioManager("", 2000, null); //TODO: GET NAME FROM FOLDER.
         }
         return instance;
     }
@@ -38,4 +40,17 @@ public class PortfolioManager {
     }
 
 
+    public void setApprovalThreshold(double approvalThreshold) {
+        this.approvalThreshold = approvalThreshold;
+    }
+
+    public List<Customer> getCustomerList() {
+        return customerList;
+    }
+
+    public void setCustomerList(List<Customer> customerList) {
+        if (customerList != null) {
+            this.customerList = customerList;
+        }
+    }
 }

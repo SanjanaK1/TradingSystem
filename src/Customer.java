@@ -1,9 +1,15 @@
-public class Customer {
+public class Customer extends Person {
 
     private boolean approved = false ; //0 = not approved
     private double money;
     private Portfolio portfolio = new Portfolio(null);
 
+    public Customer(String name, boolean isApproved, double money, Portfolio p) {
+        super(name);
+        setApproved(isApproved);
+        setMoney(money);
+        setPortfolio(p);
+    }
 
     public boolean isApproved() {
         return approved;
@@ -35,9 +41,10 @@ public class Customer {
 
     public boolean buyStock(Stock s, int quantityBought) {
         boolean bought = false;
-        double stockCost = quantityBought * s.getCurrentPrice();
-        if (s != null && StockMarket.isStockInMarket(s) && this.money >= stockCost) {
+
+        if (s != null && StockMarket.isStockInMarket(s) && this.money >= quantityBought * s.getCurrentPrice()) {
             //TODO: process purchase with customer money.
+            double stockCost = quantityBought * s.getCurrentPrice();
             boolean isSuccessfulPurchase = StockMarket.purchase(s, quantityBought);
             if (isSuccessfulPurchase) {
                 portfolio.addStock(s, quantityBought);
