@@ -3,20 +3,32 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LoginWindow extends JFrame implements ActionListener {
+public class LoginWindow extends JFrame {
+    JTextField userTextField;
+    JTextField passwordTextField;
+    JButton loginButton;
+    JLabel userLabel;
+    JLabel pwLabel;
+    JLabel iconLabel;
     public LoginWindow(){
         initComponents();
     }
     private void initComponents(){
-        JTextField userTextField = new JTextField(25);
+        userTextField = new JTextField(25);
         userTextField.setMinimumSize(new java.awt.Dimension(100, 20));
-        JTextField passwordTextField = new JPasswordField(25);
+        passwordTextField = new JPasswordField(25);
         passwordTextField.setMinimumSize(new java.awt.Dimension(100, 20));
-        JButton loginButton = new JButton("Log In");//creating instance of JButton
-        JLabel userLabel = new JLabel("Username:");
-        JLabel pwLabel = new JLabel("Password:");
+        loginButton = new JButton("Log In");//creating instance of JButton
+        userLabel = new JLabel("Username:");
+        pwLabel = new JLabel("Password:");
         ImageIcon loginIcon = IconCreator.createImageIcon("Heptakaidecahedron_example.gif", "Heptakaidecahedron example");
-        JLabel iconLabel = new JLabel("This is the login screen", loginIcon, JLabel.CENTER);
+        iconLabel = new JLabel("This is the login screen", loginIcon, JLabel.CENTER);
+
+        loginButton.addActionListener(new ActionListener() {
+                                          public void actionPerformed(ActionEvent evt) {
+                                              convertButtonActionPerformed(evt);
+                                          }
+                                      });
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,26 +73,9 @@ public class LoginWindow extends JFrame implements ActionListener {
         setSize(700,500);
     }
 
-    public void createWindow(){
-        JFrame f = new JFrame();
-
-        JButton loginInUser = new JButton("Log In as User");//creating instance of JButton
-        JButton loginInPM = new JButton("Log In as Portfolio Manager");
-        loginInUser.setBounds(250,300,200, 40);//x axis, y axis, width, height
-        f.add(loginInUser);
-
-        loginInPM.setBounds(230,350,250, 40);//x axis, y axis, width, height
-        f.add(loginInPM);
-
-        f.setSize(1000,700);
-        f.setLayout(null);//using no layout managers
-        f.setVisible(true);//making the frame visible
-
-    }
-
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
+    private void convertButtonActionPerformed(ActionEvent evt) {
+        String username = userTextField.getText().trim();
+        String password = passwordTextField.getText();
+        Security.login(username, password);
     }
 }
