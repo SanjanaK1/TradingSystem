@@ -2,11 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 public class LoginWindow extends JFrame {
     JTextField userTextField;
     JTextField passwordTextField;
-    JButton loginButton;
+    JButton loginButton, createAccountButton;
     JLabel userLabel;
     JLabel pwLabel;
     JLabel iconLabel;
@@ -19,6 +20,7 @@ public class LoginWindow extends JFrame {
         passwordTextField = new JPasswordField(25);
         passwordTextField.setMinimumSize(new java.awt.Dimension(100, 20));
         loginButton = new JButton("Log In");//creating instance of JButton
+        createAccountButton = new JButton("Create Account");
         userLabel = new JLabel("Username:");
         pwLabel = new JLabel("Password:");
         ImageIcon loginIcon = IconCreator.createImageIcon("Heptakaidecahedron_example.gif", "Heptakaidecahedron example");
@@ -26,9 +28,14 @@ public class LoginWindow extends JFrame {
 
         loginButton.addActionListener(new ActionListener() {
                                           public void actionPerformed(ActionEvent evt) {
-                                              convertButtonActionPerformed(evt);
+                                              convertLoginButtonActionPerformed(evt);
                                           }
                                       });
+        createAccountButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                convertAccountButtonActionPerformed(evt);
+            }
+        });
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -44,7 +51,9 @@ public class LoginWindow extends JFrame {
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                 .addComponent(userTextField)
                                 .addComponent(passwordTextField))
-                        .addComponent(loginButton)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addComponent(loginButton)
+                                .addComponent(createAccountButton))
                         .addComponent(iconLabel)
                         .addContainerGap()
         );
@@ -66,16 +75,27 @@ public class LoginWindow extends JFrame {
                                         .addComponent(passwordTextField))
                                 .addGroup(layout.createSequentialGroup()
                                         .addContainerGap()
-                                        .addComponent(loginButton)))
+                                        .addComponent(loginButton)
+                                        .addComponent(createAccountButton)))
         );
         pack();
 
         setSize(700,500);
     }
 
-    private void convertButtonActionPerformed(ActionEvent evt) {
+    private void convertAccountButtonActionPerformed(ActionEvent evt) {
         String username = userTextField.getText().trim();
         String password = passwordTextField.getText();
-        Security.login(username, password);
+        if (Security.login(username, password)) {
+            dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        }
+    }
+
+    private void convertLoginButtonActionPerformed(ActionEvent evt) {
+        String username = userTextField.getText().trim();
+        String password = passwordTextField.getText();
+        if (Security.createAccount(username, password)) {
+            dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        }
     }
 }
