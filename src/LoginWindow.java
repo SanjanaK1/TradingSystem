@@ -22,7 +22,7 @@ public class LoginWindow extends JFrame {
         createAccountButton = new JButton("Create Account");
         userLabel = new JLabel("Username:");
         pwLabel = new JLabel("Password:");
-        ImageIcon loginIcon = IconCreator.createImageIcon("Heptakaidecahedron_example.gif", "Heptakaidecahedron example");
+        ImageIcon loginIcon = IconCreator.createImageIcon("rsc/Heptakaidecahedron_example.gif", "Heptakaidecahedron example");
         iconLabel = new JLabel("This is the login screen", loginIcon, JLabel.CENTER);
 
         loginButton.addActionListener(new ActionListener() {
