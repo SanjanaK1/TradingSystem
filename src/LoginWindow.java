@@ -1,20 +1,40 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
-public class LoginWindow extends JFrame implements ActionListener {
+public class LoginWindow extends JFrame {
+    JTextField userTextField;
+    JTextField passwordTextField;
+    JButton loginButton, createAccountButton;
+    JLabel userLabel;
+    JLabel pwLabel;
+    JLabel iconLabel;
     public LoginWindow(){
         initComponents();
     }
     private void initComponents(){
-        JTextField userTextField = new JTextField(25);
-        JTextField passwordTextField = new JPasswordField(25);
-        JButton loginButton = new JButton("Log In");//creating instance of JButton
-        JLabel userLabel = new JLabel("Username:");
-        JLabel pwLabel = new JLabel("Password:");
-        ImageIcon loginIcon = IconCreator.createImageIcon("Heptakaidecahedron_example.gif", "Heptakaidecahedron example");
-        JLabel iconLabel = new JLabel("This is the login screen", loginIcon, JLabel.CENTER);
+        userTextField = new JTextField(25);
+        userTextField.setMinimumSize(new java.awt.Dimension(100, 20));
+        passwordTextField = new JPasswordField(25);
+        passwordTextField.setMinimumSize(new java.awt.Dimension(100, 20));
+        loginButton = new JButton("Log In");//creating instance of JButton
+        createAccountButton = new JButton("Create Account");
+        userLabel = new JLabel("Username:");
+        pwLabel = new JLabel("Password:");
+        ImageIcon loginIcon = IconCreator.createImageIcon("rsc/Heptakaidecahedron_example.gif", "Heptakaidecahedron example");
+        iconLabel = new JLabel("This is the login screen", loginIcon, JLabel.CENTER);
+
+        loginButton.addActionListener(new ActionListener() {
+                                          public void actionPerformed(ActionEvent evt) {
+                                              convertLoginButtonActionPerformed(evt);
+                                          }
+                                      });
+        createAccountButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                convertAccountButtonActionPerformed(evt);
+            }
+        });
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -30,7 +50,9 @@ public class LoginWindow extends JFrame implements ActionListener {
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                 .addComponent(userTextField)
                                 .addComponent(passwordTextField))
-                        .addComponent(loginButton)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addComponent(loginButton)
+                                .addComponent(createAccountButton))
                         .addComponent(iconLabel)
                         .addContainerGap()
         );
@@ -52,33 +74,27 @@ public class LoginWindow extends JFrame implements ActionListener {
                                         .addComponent(passwordTextField))
                                 .addGroup(layout.createSequentialGroup()
                                         .addContainerGap()
-                                        .addComponent(loginButton)))
+                                        .addComponent(loginButton)
+                                        .addComponent(createAccountButton)))
         );
         pack();
 
         setSize(700,500);
     }
 
-    public void createWindow(){
-        JFrame f = new JFrame();
-
-        JButton loginInUser = new JButton("Log In as User");//creating instance of JButton
-        JButton loginInPM = new JButton("Log In as Portfolio Manager");
-        loginInUser.setBounds(250,300,200, 40);//x axis, y axis, width, height
-        f.add(loginInUser);
-
-        loginInPM.setBounds(230,350,250, 40);//x axis, y axis, width, height
-        f.add(loginInPM);
-
-        f.setSize(800,700);
-        f.setLayout(null);//using no layout managers
-        f.setVisible(true);//making the frame visible
-
+    private void convertAccountButtonActionPerformed(ActionEvent evt) {
+        String username = userTextField.getText().trim();
+        String password = passwordTextField.getText();
+        if (Security.login(username, password)) {
+            dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        }
     }
 
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
+    private void convertLoginButtonActionPerformed(ActionEvent evt) {
+        String username = userTextField.getText().trim();
+        String password = passwordTextField.getText();
+        if (Security.createAccount(username, password)) {
+            dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        }
     }
 }

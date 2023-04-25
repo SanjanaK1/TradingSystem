@@ -1,7 +1,3 @@
-import src.LoginWindow;
-
-import src.LoginWindow;
-
 import java.awt.*;
 
 public class TradingSystem {
