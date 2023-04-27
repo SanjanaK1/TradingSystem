@@ -1,0 +1,5 @@
+Name    Account     StockList                                   Money       DerivativeAccount?
+Henry               [(AAPL, 3), (META, 5)]                      50000       N
+Joe                 [(UNH, 14), (GOOG, 20), (TSLA, 10)]         100000      N
+Amy                 [(DIS, 4)]                                  70000       N
+Salma               []                                          60          N
