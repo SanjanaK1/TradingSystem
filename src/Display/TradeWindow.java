@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,7 +10,7 @@ public class TradeWindow {
     private JLabel buyStocksLabel;
     private JLabel sellStocksLabel;
     private JTable table1;
-    private JPanel panel;
+    JPanel panel;
     private JButton detailsButton;
     private JButton bankButton;
     private JButton refreshTableButton;
@@ -24,6 +25,8 @@ public class TradeWindow {
 
     public TradeWindow(){
         initComponents();
+
+        panel.setPreferredSize(new Dimension(600,400));
     }
 
     private void initComponents() {
@@ -33,24 +36,30 @@ public class TradeWindow {
                 buy();
             }
         });
-
         sellButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
-                ;
+                sell();
             }
         });
+        bankButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                bank();
+            }
+        });
+    }
 
-        this.panel.setSize(700,500);
+    private void bank() {
+        GUI.showBankWindow();
+    }
+
+    private void sell() {
+        GUI.showSellWindow();
     }
 
     private void buy() {
-//        JFrame frame = new JFrame("BuyWindow");
-//        frame.setContentPane(new BuyWindow().panel);
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.pack();
-//        frame.setVisible(true);
+        GUI.showBuyWindow();
     }
 
     private void createUIComponents() {
