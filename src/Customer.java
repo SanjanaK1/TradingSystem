@@ -1,4 +1,3 @@
-;
 public class Customer extends Person {
 
     private boolean approved = false ; //0 = not approved
