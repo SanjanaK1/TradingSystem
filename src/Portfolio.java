@@ -1,3 +1,4 @@
+package src;
 import java.util.Map;
 
 public class Portfolio {
@@ -43,10 +44,25 @@ public class Portfolio {
         }
     }
 
+    public double getRealizedAmount(Stock s) {
+        //TODO Move change to elsewhere as stock should no longer be in portfolio.
+        try {
+            return s.getNetChange();
+        } catch (Exception e) {
+            System.out.println("Stock is null");
+            return -1;
+        }
+    }
 
     public double getUnrealizedAmount(Stock s) {
         //TODO
-        return 0;
+        try {
+            return s.getNetChange();
+        } catch (Exception e) {
+            System.out.println("Stock is null");
+            return -1;
+        }
+
     }
 
     public double getStockListValue() {

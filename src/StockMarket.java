@@ -16,6 +16,19 @@ public class StockMarket {
         return isSuccessfulPurchase;
     }
 
+    public static boolean sell(Stock s, int quantitySold) {
+        boolean isSuccessfulSell = false;
+        boolean isStockInMarket = isStockInMarket(s);
+        if (isStockInMarket) {
+            int currentStockQuantity =  stockListOnMarket.get(s);
+            stockListOnMarket.replace(s, currentStockQuantity + quantitySold);
+        } else {
+            stockListOnMarket.put(s, quantitySold);
+        }
+
+        return isSuccessfulSell;
+    }
+
     private Map<Stock, Integer> getStocks() {
         return stockListOnMarket;
     }

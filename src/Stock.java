@@ -2,6 +2,8 @@ public class Stock implements Tradeable{
 
     private double boughtPrice;
     private double currentPrice;
+    private Date datePurchased;
+    private Date dateSold;
     private String name;
 
     public double getBoughtPrice() {
@@ -30,5 +32,21 @@ public class Stock implements Tradeable{
 
     public double getNetChange() {
         return currentPrice - boughtPrice;
+    }
+
+    public Date getDatePurchased() {
+        return datePurchased;
+    }
+
+    public void setDatePurchased(Date datePurchased) {
+        this.datePurchased = datePurchased;
+    }
+
+    public Date getDateSold() {
+        return dateSold;
+    }
+
+    public void setDateSold(Date dateSold) {
+        this.dateSold = dateSold;
     }
 }
