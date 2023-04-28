@@ -92,7 +92,7 @@ public class LoginWindow extends JFrame {
         }
     }
 
-    private void convertLoginButtonActionPerformed(ActionEvent evt) {
+    private void convertLoginButtonActionPerformed(ActionEvent evt) throws IOException {
         String username = userTextField.getText().trim();
         String password = passwordTextField.getText();
         if (Security.createAccount(username, password)) {
