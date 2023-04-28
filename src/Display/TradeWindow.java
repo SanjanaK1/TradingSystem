@@ -42,7 +42,7 @@ public class TradeWindow {
             }
         });
 
-
+        this.panel.setSize(700,500);
     }
 
     private void buy() {
