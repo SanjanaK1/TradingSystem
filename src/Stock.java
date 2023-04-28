@@ -1,3 +1,4 @@
+package src;
 public class Stock implements Tradeable{
 
     private double boughtPrice;
@@ -48,5 +49,17 @@ public class Stock implements Tradeable{
 
     public void setDateSold(Date dateSold) {
         this.dateSold = dateSold;
+    }
+
+    @Override
+    public boolean buyStock(Stock s, int quantityBought) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'buyStock'");
+    }
+
+    @Override
+    public boolean sellStock(Stock s, int quantitySold) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'sellStock'");
     }
 }

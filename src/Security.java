@@ -4,9 +4,15 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
 
 public class Security 
 {
+
+    public static void main(String args[]) throws IOException{
+        createAccount("Adam", "1234");
+    }
 
 
 
@@ -30,8 +36,7 @@ public class Security
                     if(passwordTxt.equals(password))
                     {
                         System.out.println("Successfully logged in, opening your client window");
-                        UserWindow window = new UserWindow();
-                        window.openClientWindow(); //once user has successfully logged in open their client window
+                        //TODO once user has successfully logged in open their client window
                         return true;
                     }
                     else{
@@ -55,14 +60,18 @@ public class Security
 
     }
 
-    public static boolean createAccount(String username, String password) {
+    public static boolean createAccount(String username, String password) throws IOException {
         //Read in usernames and passwords from text file
+
+        //currently this rewrites the entire file which we need to fix
+        FileWriter fileWriter = new FileWriter("C:\\Users\\17322\\HighSchool\\TradingSystem\\src\\TXT Files\\Users.txt");
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        bufferedWriter.write(username+"\t"+password);
+        bufferedWriter.close();
 
         //If username matches existing account, return false
 
-        //Add username and password to text files
-
-        //Create corresponding client window
+        
 
         return true;
     }
