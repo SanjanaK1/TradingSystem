@@ -1,14 +1,18 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TradeWindow {
-    private JButton goButton;
-    private JButton goButton1;
+    private JButton buyButton;
+    private JButton sellButton;
     private JLabel accountNameLabel;
     private JLabel buyStocksLabel;
     private JLabel sellStocksLabel;
     private JTable table1;
     private JPanel panel;
-    private JButton openButton;
+    private JButton detailsButton;
+    private JButton bankButton;
+    private JButton refreshTableButton;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("TradeWindow");
@@ -23,6 +27,30 @@ public class TradeWindow {
     }
 
     private void initComponents() {
+        buyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buy();
+            }
+        });
+
+        sellButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO
+                ;
+            }
+        });
+
+
+    }
+
+    private void buy() {
+//        JFrame frame = new JFrame("BuyWindow");
+//        frame.setContentPane(new BuyWindow().panel);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.pack();
+//        frame.setVisible(true);
     }
 
     private void createUIComponents() {

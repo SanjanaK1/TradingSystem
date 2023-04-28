@@ -87,19 +87,27 @@ public class LoginWindow extends JFrame {
         setSize(700,500);
     }
 
-    private void convertAccountButtonActionPerformed(ActionEvent evt) throws IOException {
+    private void convertAccountButtonActionPerformed(ActionEvent evt) {
         String username = userTextField.getText().trim();
         String password = passwordTextField.getText();
-        if (Security.login(username, password)) {
-            dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        try {
+            if (Security.login(username, password)) {
+                dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
     private void convertLoginButtonActionPerformed(ActionEvent evt) {
         String username = userTextField.getText().trim();
         String password = passwordTextField.getText();
-        if (Security.createAccount(username, password)) {
-            dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        try{
+            if (Security.createAccount(username, password)) {
+                dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
