@@ -11,7 +11,7 @@ public class Security
 {
 
     public static void main(String args[]) throws IOException{
-        createAccount("Adam", "1234");
+        createAccount("Salma", "12345");
     }
 
 
@@ -63,7 +63,7 @@ public class Security
     public static boolean createAccount(String username, String password) throws IOException {
         //Read in usernames and passwords from text file
 
-        //currently this rewrites the entire file which we need to fix
+        //TODO currently this rewrites the entire file which we need to fix
         FileWriter fileWriter = new FileWriter("C:\\Users\\17322\\HighSchool\\TradingSystem\\src\\TXT Files\\Users.txt");
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
         bufferedWriter.write(username+"\t"+password);
