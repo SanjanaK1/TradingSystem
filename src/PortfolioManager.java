@@ -1,4 +1,4 @@
-package src;
+;
 //observer pattern
 //singleton pattern
 

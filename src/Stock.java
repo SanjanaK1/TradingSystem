@@ -1,4 +1,4 @@
-package src;
+;
 public class Stock implements Tradeable{
 
     private double boughtPrice;
