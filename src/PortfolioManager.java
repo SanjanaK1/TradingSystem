@@ -1,6 +1,3 @@
-;
-//observer pattern
-//singleton pattern
 
 
 // Class implements singleton pattern.

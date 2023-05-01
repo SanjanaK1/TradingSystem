@@ -1,4 +1,4 @@
-;
+
 public interface Tradeable {
 
     public boolean buyStock(Stock s, int quantityBought);

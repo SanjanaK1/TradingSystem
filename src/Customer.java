@@ -43,7 +43,6 @@ public class Customer extends Person {
         boolean bought = false;
 
         if (s != null && StockMarket.isStockInMarket(s) && this.money >= quantityBought * s.getCurrentPrice()) {
-            //TODO: process purchase with customer money.
             double stockCost = quantityBought * s.getCurrentPrice();
             boolean isSuccessfulPurchase = StockMarket.purchase(s, quantityBought);
             if (isSuccessfulPurchase) {
@@ -64,11 +63,7 @@ public class Customer extends Person {
             setMoney(netChange);
             sold = true;
         }
-
         //calculate realized gains here
-        
-
-
 
         return sold;
     }
