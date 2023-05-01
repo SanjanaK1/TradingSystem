@@ -1,3 +1,6 @@
 
 *.xml
 /out/
+/src/out/
+*.iml
+/.idea/
