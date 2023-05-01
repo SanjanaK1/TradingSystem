@@ -1,7 +1,9 @@
-;
-import java.util.Map;
 
-public class Portfolio {
+import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
+
+public class Portfolio implements Observer {
 
     private Map<Stock, Integer> stockList; //mapping between Stocks and their amounts.
 
@@ -15,6 +17,9 @@ public class Portfolio {
 
     public void addStock(Stock s, int quantityAdded) {
         if (quantityAdded > 0) {
+            if (!isStockInList(s.getName())) {
+                s.addObserver(this);
+            }
             this.stockList.putIfAbsent(s, quantityAdded);
         }
     }
@@ -22,8 +27,13 @@ public class Portfolio {
     public void removeStock(Stock s, int quantityRemoved) {
         if (this.stockList.get(s) != null && quantityRemoved > 0) {
             int currentQuantity = this.stockList.get(s);
-            if (currentQuantity >= quantityRemoved)
+            if (currentQuantity > quantityRemoved)
                 this.stockList.replace(s, currentQuantity - quantityRemoved);
+            else if (currentQuantity == quantityRemoved){
+                s.deleteObserver(this);
+                this.stockList.remove(s);
+
+            }
         }
     }
     public Map<Stock, Integer> getStockList() {
@@ -65,15 +75,64 @@ public class Portfolio {
 
     }
 
+    public Stock[] getStockArray() {
+        return this.stockList.keySet().toArray(new Stock[0]);
+    }
+
     public double getStockListValue() {
         double value = 0;
-        Stock[] stockArray = this.stockList.keySet().toArray(new Stock[0]);
+        Stock[] stockArray = getStockArray();
         for (int i = 0; i < stockArray.length; i++) {
-            value += getUnrealizedAmount(stockArray[i]); //TODO: check formula for calculating value of stocks.
+            // value accounts for quantity times stock price net change.
+            value += getUnrealizedAmount(stockArray[i]) * this.stockList.get(stockArray[i]);
         }
         return value;
     }
 
 
+    @Override
+    public void update(Observable o, Object arg) {
+        Stock changedStock = (Stock) o;
+        boolean isInList = isStockInList(changedStock.getName());
+        if (isInList) {
+            updateStockPrice(changedStock);
+        }
+    }
 
+    private void updateStockPrice(Stock changedStock) {
+        Stock s = getStock(changedStock.getName()); // gets Stock in Portfolio (may be null).
+        if (s != null) {
+            s.setCurrentPrice(changedStock.getCurrentPrice());
+            this.stockList.put(s, this.stockList.get(s));
+        }
+    }
+
+    public Stock getStock(String stockName) {
+        Stock s = getStockInList(stockName);
+        return s;
+    }
+
+    private Stock getStockInList(String stockName) {
+        Stock retrieved = null;
+        Stock[] stockArray = getStockArray();
+        for (int i = 0; i < stockArray.length; i++) {
+            if (stockArray[i].getName().equals(stockName)) {
+                retrieved = stockArray[i];
+                break;
+            }
+        }
+        return retrieved;
+    }
+
+    private boolean isStockInList(String stockName) {
+        boolean isInList = false;
+        Stock[] stockArray = getStockArray();
+        for (int i = 0; i < stockArray.length; i++) {
+            if (stockArray[i].getName().equals(stockName)) {
+                isInList = true;
+                break;
+            }
+        }
+        return isInList;
+    }
 }
