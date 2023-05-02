@@ -9,11 +9,12 @@ import java.io.BufferedWriter;
 public class Security 
 {
 
-    public static void main(String args[]) throws IOException{
-        createAccount("Salma", "12345");
-    }
-
-
+    /*public static void main(String args[]) throws IOException{
+        //createAccount("mark", "12");
+        //createAccount("ally", "000");
+        login("ally", "222");
+    } */
+    
 
     public static boolean login(String username, String password) throws IOException {
         //Read in usernames and passwords from text file
@@ -21,9 +22,9 @@ public class Security
         //Users.txt
         
         try {
-            BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\17322\\HighSchool\\TradingSystem\\src\\TXT Files\\Users.txt")); 
+            BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\17322\\HighSchool\\TradingSystem\\src\\TXT Files\\Users.txt"));
             br.readLine();
-            for (String line = br.readLine(); line != null; line = br.readLine()) 
+            for (String line = br.readLine(); line != null; line = br.readLine())
             {
                 //System.out.println(line);
                 String[] parts = line.split("\\s+");
@@ -63,9 +64,9 @@ public class Security
         //Read in usernames and passwords from text file
 
         //TODO currently this rewrites the entire file which we need to fix
-        FileWriter fileWriter = new FileWriter("C:\\Users\\17322\\HighSchool\\TradingSystem\\src\\TXT Files\\Users.txt");
+        FileWriter fileWriter = new FileWriter("C:\\Users\\17322\\HighSchool\\TradingSystem\\src\\TXT Files\\Users.txt", true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        bufferedWriter.write(username+"\t"+password);
+        bufferedWriter.write(username+"\t"+password+"\n");
         bufferedWriter.close();
 
         //If username matches existing account, return false
