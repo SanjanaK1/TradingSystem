@@ -14,7 +14,6 @@ public class StockMarket {
             stockListOnMarket.replace(s, currentStockQuantity - quantityBought);
             isSuccessfulPurchase = true;
         }
-
         return isSuccessfulPurchase;
     }
 
@@ -39,7 +38,7 @@ public class StockMarket {
         }
     }
 
-    private Map<Stock, Integer> getStocks() {
+    private static Map<Stock, Integer> getStocks() {
         return stockListOnMarket;
     }
 
