@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class GUI {
     private static JFrame buyWindow, tradeWindow, sellWindow, bankWindow;
@@ -58,5 +59,9 @@ public class GUI {
     public static void hideBankWindow() {
         if (bankWindow == null) return;
         bankWindow.setVisible(false);
+    }
+
+    public static void invalidPopup() {
+        Dialog d = new JDialog();
     }
 }

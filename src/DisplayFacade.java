@@ -1,4 +1,5 @@
 public class DisplayFacade {
+    private static Customer c;
 
     public static String[] getTableHeader(){
         return new String[]{"Stock Name", "Price ($)", "Number Owned", "Total Value ($)", "Bought Value ($)", "Delta ($)"};
@@ -22,4 +23,11 @@ public class DisplayFacade {
     //Doesn't have to be STRING. Could be int of a stock id, or however stocks are internally represented.
     public static String[] getOwnedStockNames(){return null;}
     public static int[] getOwnedStockAmounts(){return null;}
+    public static boolean buy(Stock s, int quantity) {
+        return MarketSystem.buyStock(c, s, quantity);
+    }
+
+    public static boolean sell(Stock s, int quantity) {
+        return MarketSystem.sellStock(c, s, quantity);
+    }
 }
