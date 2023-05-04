@@ -1,6 +1,6 @@
 import java.util.Map;
 
-public class MarketSystem {
+public class MarketSystemFacade {
 
     private PortfolioManager portfolioManager;
     private Map<Customer, Portfolio> customers;
