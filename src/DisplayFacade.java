@@ -1,10 +1,11 @@
 public class DisplayFacade {
-    private static Customer c;
 
+    private static Customer c;
     public static int numAttributesToDisplay = 6;
+    public static String[] tableHeaders = new String[]{"Stock Name", "Current Value ($)", "Number Owned", "Total Value ($)", "Bought Value ($)", "Delta ($)"};
 
     public static String[] getTableHeader(){
-        return new String[]{"Stock Name", "Current Value ($)", "Number Owned", "Total Value ($)", "Bought Value ($)", "Delta ($)"};
+        return tableHeaders;
     }
     public static String[][] getTableData(){
         return new String[][]{{"Stock Example", "2$", "4", "8$"},{"B1", "B2"}};
