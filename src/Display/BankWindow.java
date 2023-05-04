@@ -24,9 +24,7 @@ public class BankWindow {
 
     private void initComponents() {
         cancelButton.addActionListener(e -> {
-            GUI.hideSellWindow();
+            GUI.hideBankWindow();
         });
-
-
     }
 }

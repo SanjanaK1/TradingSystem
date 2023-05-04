@@ -45,31 +45,27 @@ public class TradeWindow {
 
 
         //Add action listeners to buttons
-        buyButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                buy();
-            }
+        detailsButton.addActionListener(e -> {
+            info();
         });
-        sellButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                sell();
-            }
+        buyButton.addActionListener(e -> {
+            buy();
         });
-        bankButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                bank();
-            }
+        sellButton.addActionListener(e -> {
+            sell();
         });
+        bankButton.addActionListener(e -> {
+            bank();
+        });
+        refreshTableButton.addActionListener(ne -> {
+            update();
+        });
+    }
 
-        refreshTableButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                update();
-            }
-        });
+    private void info() {
+        InfoWindow info = new InfoWindow();
+        info.pack();
+        info.setVisible(true);
     }
 
     private void bank() {
