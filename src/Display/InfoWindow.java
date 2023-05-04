@@ -5,6 +5,7 @@ public class InfoWindow extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JLabel textLabel;
 
     public InfoWindow() {
         setContentPane(contentPane);
