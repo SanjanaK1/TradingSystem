@@ -1,4 +1,4 @@
 *.xml
-TradingSystem.iml
+*.iml
 /out/
 /.idea/
