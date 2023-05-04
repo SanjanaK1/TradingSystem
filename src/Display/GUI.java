@@ -10,6 +10,7 @@ public class GUI {
         frame.pack();
         frame.setVisible(true);
     }
+
     public static void showBuyWindow() {
         if (buyWindow == null) {
             buyWindow = new JFrame("BuyWindow");

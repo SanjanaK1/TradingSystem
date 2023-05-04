@@ -19,6 +19,15 @@ public class BuyWindow {
     }
 
     public BuyWindow(){
+        initComponents();
         panel.setPreferredSize(new Dimension(500,400));
+    }
+
+    private void initComponents() {
+        cancelButton.addActionListener(e -> {
+            GUI.hideBuyWindow();
+        });
+
+        stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
     }
 }
