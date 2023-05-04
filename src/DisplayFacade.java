@@ -26,4 +26,8 @@ public class DisplayFacade {
     //Doesn't have to be STRING. Could be int of a stock id, or however stocks are internally represented.
     public static String[] getOwnedStockNames(){return null;}
     public static int[] getOwnedStockAmounts(){return null;}
+
+    public static void setCustomer(Customer c) {
+        DisplayFacade.c = c;
+    }
 }

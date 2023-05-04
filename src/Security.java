@@ -75,5 +75,7 @@ public class Security
         return true;
     }
 
-
+    private static void setCustomer(Customer c) {
+        DisplayFacade.setCustomer(c);
+    }
 }
