@@ -18,6 +18,15 @@ public class BankWindow {
     }
 
     public BankWindow(){
+        initComponents();
         panel.setPreferredSize(new Dimension(500,400));
+    }
+
+    private void initComponents() {
+        cancelButton.addActionListener(e -> {
+            GUI.hideSellWindow();
+        });
+
+
     }
 }

@@ -19,6 +19,15 @@ public class SellWindow {
     }
 
     public SellWindow(){
+        initComponents();
         panel.setPreferredSize(new Dimension(500,400));
+    }
+
+    private void initComponents() {
+        cancelButton.addActionListener(e -> {
+                GUI.hideSellWindow();
+        });
+
+        stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
     }
 }
