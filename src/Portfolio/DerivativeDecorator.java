@@ -30,6 +30,16 @@ public class DerivativeDecorator extends PortfolioDecorator{
         return 0;
     }
 
+    @Override
+    public int getStockListCount() {
+        return 0;
+    }
+
+    @Override
+    public Stock[] getStockArray() {
+        return new Stock[0];
+    }
+
     private String addDerivative() {
         return "Derivative Account";
     }
