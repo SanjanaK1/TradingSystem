@@ -11,6 +11,8 @@ public class LoginWindow extends JFrame {
     JLabel userLabel;
     JLabel pwLabel;
     JLabel iconLabel;
+    TradeWindow tradeWindow = new TradeWindow();
+
     public LoginWindow(){
         initComponents();
     }
@@ -87,7 +89,8 @@ public class LoginWindow extends JFrame {
         String username = userTextField.getText().trim();
         String password = passwordTextField.getText();
         try {
-            if (Security.login(username, password)) {
+            if (Security.createAccount(username, password) == true) {
+                GUI.tradeWindow();
                 dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
             }
         } catch (IOException e) {
@@ -99,7 +102,8 @@ public class LoginWindow extends JFrame {
         String username = userTextField.getText().trim();
         String password = passwordTextField.getText();
         try{
-            if (Security.createAccount(username, password)) {
+            if (Security.login(username, password) == true) {
+                GUI.tradeWindow();
                 dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
             }
         } catch (IOException e) {

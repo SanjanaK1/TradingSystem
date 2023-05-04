@@ -87,4 +87,5 @@ public class TradeWindow {
         //stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
         ((DisplayTableModel) stockTable.getModel()).test();
     }
+
 }
