@@ -63,6 +63,13 @@ public class TradeWindow {
                 bank();
             }
         });
+
+        refreshTableButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                update();
+            }
+        });
     }
 
     private void bank() {
@@ -77,8 +84,12 @@ public class TradeWindow {
         GUI.showBuyWindow();
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
+    public void update() {
+        //accountNameLabel.setText(DisplayFacade.getUserName());
+        totalAssetLabel.setText(DisplayFacade.getTotal());
+        liquidAssetLabel.setText(DisplayFacade.getLiquid());
+        //stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
+        ((DisplayTableModel) stockTable.getModel()).test();
     }
 
 }
