@@ -2,9 +2,9 @@ public class Customer extends Person {
 
     private boolean approved = false ; //0 = not approved
     private double money;
-    private BasePortfolio basePortfolio = new BasePortfolio(null);
+    private Portfolio portfolio = new BasePortfolio(null);
 
-    public Customer(String name, boolean isApproved, double money, BasePortfolio p) {
+    public Customer(String name, boolean isApproved, double money, Portfolio p) {
         super(name);
         setApproved(isApproved);
         setMoney(money);
@@ -27,12 +27,12 @@ public class Customer extends Person {
         this.money = money;
     }
 
-    public BasePortfolio getPortfolio() {
-        return basePortfolio;
+    public Portfolio getPortfolio() {
+        return portfolio;
     }
 
-    public void setPortfolio(BasePortfolio basePortfolio) {
-        this.basePortfolio = basePortfolio;
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 
     public double getNetValue() {
@@ -44,21 +44,18 @@ public class Customer extends Person {
 
         if (s != null && StockMarket.isStockInMarket(s) && this.money >= quantityBought * s.getCurrentPrice()) {
             double stockCost = quantityBought * s.getCurrentPrice();
-            boolean isSuccessfulPurchase = StockMarket.purchase(s, quantityBought);
-            if (isSuccessfulPurchase) {
-                basePortfolio.addStock(s, quantityBought);
-                setMoney(this.money - stockCost);
-                bought = true;
-            }
-        }
+            portfolio.addStock(s, quantityBought);
+            setMoney(this.money - stockCost);
+            bought = true;
 
+        }
         return bought;
     }
 
     public boolean sellStock(Stock s, int quantitySold) {
         boolean sold = false;
-        if (s != null && basePortfolio.getStockQuantity(s) > 0) {
-            basePortfolio.removeStock(s, quantitySold);
+        if (s != null && portfolio.getStockQuantity(s) > 0) {
+            portfolio.removeStock(s, quantitySold);
             double netChange = s.getNetChange() * quantitySold;
             setMoney(netChange);
             sold = true;
@@ -66,5 +63,13 @@ public class Customer extends Person {
         //calculate realized gains here
 
         return sold;
+    }
+
+    public boolean isStockInPortfolio(Stock s) {
+        return false; // todo
+    }
+
+    public boolean hasMoneyMoreThan(double amount) {
+        return this.getMoney() >= amount;
     }
 }
