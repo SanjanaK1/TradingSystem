@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Customer extends Person {
 
     private boolean approved = false ; //0 = not approved
@@ -71,5 +74,22 @@ public class Customer extends Person {
 
     public boolean hasMoneyMoreThan(double amount) {
         return this.getMoney() >= amount;
+    }
+
+    public String[][] getStocksListInformation() {
+        int numOfStocks = this.getPortfolio().getStockListCount();
+        Stock[] stockArray = this.getPortfolio().getStockArray();
+        String[][] stockListInformation =
+                new String[DisplayFacade.numAttributesToDisplay][numOfStocks];
+        for (int i = 0; i < numOfStocks; i++) {
+            stockListInformation[i][0] = stockArray[i].getName(); // Name of Stock
+            stockListInformation[i][1] = String.valueOf(stockArray[i].getCurrentPrice()); // Current Price at Market
+            stockListInformation[i][2] = String.valueOf(getPortfolio().getStockQuantity(stockArray[i])); // Quantity Owned
+            stockListInformation[i][4] = String.valueOf(stockArray[i].getBoughtPrice()); // Price at which stock was bought
+            stockListInformation[i][5] = String.valueOf(Double.parseDouble(stockListInformation[i][1]) - Double.parseDouble(stockListInformation[i][4])); // Delta (Current Price - Bought Price)
+            stockListInformation[i][3] = String.valueOf(Integer.parseInt(stockListInformation[i][2]) * Double.parseDouble(stockListInformation[i][5])); // Total Price (Delta * Quantity)
+
+        }
+        return stockListInformation;
     }
 }

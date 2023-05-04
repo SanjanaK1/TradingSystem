@@ -9,4 +9,8 @@ public interface Portfolio {
     int getStockQuantity(Stock s);
 
     double getStockListValue();
+
+    int getStockListCount();
+
+    Stock[] getStockArray();
 }
