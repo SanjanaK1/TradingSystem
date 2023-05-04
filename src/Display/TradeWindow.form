@@ -18,7 +18,7 @@
           <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <component id="936ac" class="javax.swing.JLabel" binding="accountNameLabel">
+      <component id="936ac" class="javax.swing.JLabel">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -26,7 +26,7 @@
           <text value="Account Name"/>
         </properties>
       </component>
-      <component id="a9c1e" class="javax.swing.JLabel">
+      <component id="a9c1e" class="javax.swing.JLabel" binding="accountNameLabel">
         <constraints>
           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -106,7 +106,7 @@
           <text value="Total Assets"/>
         </properties>
       </component>
-      <component id="4b7f8" class="javax.swing.JLabel">
+      <component id="4b7f8" class="javax.swing.JLabel" binding="totalAssetLabel">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -122,7 +122,7 @@
           <text value="Liquid Assets"/>
         </properties>
       </component>
-      <component id="cd084" class="javax.swing.JLabel">
+      <component id="cd084" class="javax.swing.JLabel" binding="liquidAssetLabel">
         <constraints>
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -149,14 +149,29 @@
           <text value="Open"/>
         </properties>
       </component>
-      <component id="8eb43" class="javax.swing.JTable" binding="table1" default-binding="true">
+      <scrollpane id="810bb">
         <constraints>
-          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
-      </component>
+        <border type="none"/>
+        <children>
+          <component id="8eb43" class="javax.swing.JTable" binding="stockTable">
+            <constraints/>
+            <properties>
+              <autoCreateRowSorter value="true"/>
+              <cellSelectionEnabled value="false"/>
+              <columnSelectionAllowed value="false"/>
+              <focusable value="true"/>
+              <surrendersFocusOnKeystroke value="false"/>
+            </properties>
+            <clientProperties>
+              <html.disable class="java.lang.Boolean" value="false"/>
+              <terminateEditOnFocusLost class="java.lang.Boolean" value="false"/>
+            </clientProperties>
+          </component>
+        </children>
+      </scrollpane>
       <component id="a0327" class="javax.swing.JButton" binding="refreshTableButton" default-binding="true">
         <constraints>
           <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
