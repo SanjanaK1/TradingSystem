@@ -8,4 +8,8 @@ public class DisplayTableModel extends DefaultTableModel {
     public boolean isCellEditable(int row, int column) {
         return false;
     }
+
+    public void test(){
+        addRow(new String[] {"Test Row", "1", "2", "3"});
+    }
 }

@@ -18,4 +18,8 @@ public class DisplayFacade {
     public static String getLiquid() {
         return "0$";
     }
+
+    //Doesn't have to be STRING. Could be int of a stock id, or however stocks are internally represented.
+    public static String[] getOwnedStockNames(){return null;}
+    public static int[] getOwnedStockAmounts(){return null;}
 }
