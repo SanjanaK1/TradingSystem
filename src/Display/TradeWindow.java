@@ -65,6 +65,7 @@ public class TradeWindow {
     private void info() {
         InfoWindow info = new InfoWindow();
         info.pack();
+        info.setLocationRelativeTo(null);
         info.setVisible(true);
     }
 
