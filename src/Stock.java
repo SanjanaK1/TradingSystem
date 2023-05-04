@@ -1,5 +1,7 @@
-;
-public class Stock implements Tradeable{
+
+import java.util.Observable;
+
+public class Stock extends Observable implements Tradeable {
 
     private double boughtPrice;
     private double currentPrice;
@@ -28,6 +30,9 @@ public class Stock implements Tradeable{
     }
 
     public void setCurrentPrice(double currentPrice) {
+        if (this.getCurrentPrice() != currentPrice) {
+            notifyObservers();
+        }
         this.currentPrice = currentPrice;
     }
 
@@ -62,4 +67,5 @@ public class Stock implements Tradeable{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'sellStock'");
     }
+
 }

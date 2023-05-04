@@ -1,4 +1,4 @@
-;
+
 import java.io.File;
 
 public class ProcessText {
