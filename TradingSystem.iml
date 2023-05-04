@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Display" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/TXT Files" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Portfolio" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
     </content>
     <orderEntry type="inheritedJdk" />
