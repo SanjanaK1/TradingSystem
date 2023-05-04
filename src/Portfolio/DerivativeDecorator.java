@@ -10,6 +10,26 @@ public class DerivativeDecorator extends PortfolioDecorator{
         return super.makePortfolio() + "\n" + addDerivative();
     }
 
+    @Override
+    public void addStock(Stock s, int quantityBought) {
+
+    }
+
+    @Override
+    public void removeStock(Stock s, int quantitySold) {
+
+    }
+
+    @Override
+    public int getStockQuantity(Stock s) {
+        return 0;
+    }
+
+    @Override
+    public double getStockListValue() {
+        return 0;
+    }
+
     private String addDerivative() {
         return "Derivative Account";
     }

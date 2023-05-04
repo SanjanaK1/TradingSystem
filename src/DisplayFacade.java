@@ -1,4 +1,5 @@
 public class DisplayFacade {
+    private static Customer c;
 
     public static int numAttributesToDisplay = 6;
 

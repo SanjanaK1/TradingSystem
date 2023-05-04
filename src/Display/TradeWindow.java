@@ -20,6 +20,7 @@ public class TradeWindow {
     private JButton refreshTableButton;
     private JLabel totalAssetLabel;
     private JLabel liquidAssetLabel;
+    private JLabel moneyLabel;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("TradeWindow");
@@ -32,7 +33,7 @@ public class TradeWindow {
     public TradeWindow(){
         initComponents();
 
-        panel.setPreferredSize(new Dimension(600,400));
+        panel.setPreferredSize(new Dimension(800,600));
     }
 
     private void initComponents() {
@@ -42,6 +43,7 @@ public class TradeWindow {
         liquidAssetLabel.setText(DisplayFacade.getLiquid());
         stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
 
+        moneyLabel.setIcon(IconCreator.createImageIcon("rsc/money2.gif", "money"));
 
 
         //Add action listeners to buttons
@@ -65,6 +67,7 @@ public class TradeWindow {
     private void info() {
         InfoWindow info = new InfoWindow();
         info.pack();
+        info.setLocationRelativeTo(null);
         info.setVisible(true);
     }
 
