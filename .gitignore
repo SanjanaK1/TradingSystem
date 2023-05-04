@@ -1,8 +1,4 @@
-
 *.xml
-/out/
-/src/out/
-*.iml
-/.idea/
-
 TradingSystem.iml
+/out/
+/.idea/
