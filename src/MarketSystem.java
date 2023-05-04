@@ -47,4 +47,11 @@ public class MarketSystem {
         }
         return isStockSold;
     }
+
+    public static String[][] getCustomerInformation(Customer c) {
+        if (c != null) {
+            return c.getStocksListInformation();
+        }
+        return null;
+    }
 }

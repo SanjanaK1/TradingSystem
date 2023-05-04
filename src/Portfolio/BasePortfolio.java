@@ -139,4 +139,8 @@ public class BasePortfolio implements Portfolio, Observer {
         }
         return isInList;
     }
+
+    public int getStockListCount() {
+        return this.stockList.size();
+    }
 }
