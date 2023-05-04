@@ -62,6 +62,9 @@ public class GUI {
     }
 
     public static void invalidPopup() {
-        Dialog d = new JDialog();
+        InvalidPopup dialog = new InvalidPopup();
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
     }
 }
