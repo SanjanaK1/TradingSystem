@@ -1,10 +1,13 @@
 
 public interface Tradeable {
 
-    public boolean buyStock(Stock s, int quantityBought);
+    double getCurrentPrice();
 
-    public boolean sellStock(Stock s, int quantitySold);
+    void setCurrentPrice(double currentPrice);
 
+    int getQuantity();
+
+    void setQuantity(int setQuantity);
 
 
 }

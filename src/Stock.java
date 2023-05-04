@@ -8,6 +8,7 @@ public class Stock extends Observable implements Tradeable {
     private Date datePurchased;
     private Date dateSold;
     private String name;
+    private int quantity;
 
     public double getBoughtPrice() {
         return boughtPrice;
@@ -57,15 +58,11 @@ public class Stock extends Observable implements Tradeable {
     }
 
     @Override
-    public boolean buyStock(Stock s, int quantityBought) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buyStock'");
+    public int getQuantity() {
+        return quantity;
     }
 
-    @Override
-    public boolean sellStock(Stock s, int quantitySold) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sellStock'");
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
-
 }
