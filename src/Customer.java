@@ -2,9 +2,9 @@ public class Customer extends Person {
 
     private boolean approved = false ; //0 = not approved
     private double money;
-    private Portfolio portfolio = new Portfolio(null);
+    private BasePortfolio basePortfolio = new BasePortfolio(null);
 
-    public Customer(String name, boolean isApproved, double money, Portfolio p) {
+    public Customer(String name, boolean isApproved, double money, BasePortfolio p) {
         super(name);
         setApproved(isApproved);
         setMoney(money);
@@ -27,12 +27,12 @@ public class Customer extends Person {
         this.money = money;
     }
 
-    public Portfolio getPortfolio() {
-        return portfolio;
+    public BasePortfolio getPortfolio() {
+        return basePortfolio;
     }
 
-    public void setPortfolio(Portfolio portfolio) {
-        this.portfolio = portfolio;
+    public void setPortfolio(BasePortfolio basePortfolio) {
+        this.basePortfolio = basePortfolio;
     }
 
     public double getNetValue() {
@@ -46,7 +46,7 @@ public class Customer extends Person {
             double stockCost = quantityBought * s.getCurrentPrice();
             boolean isSuccessfulPurchase = StockMarket.purchase(s, quantityBought);
             if (isSuccessfulPurchase) {
-                portfolio.addStock(s, quantityBought);
+                basePortfolio.addStock(s, quantityBought);
                 setMoney(this.money - stockCost);
                 bought = true;
             }
@@ -57,8 +57,8 @@ public class Customer extends Person {
 
     public boolean sellStock(Stock s, int quantitySold) {
         boolean sold = false;
-        if (s != null && portfolio.getStockQuantity(s) > 0) {
-            portfolio.removeStock(s, quantitySold);
+        if (s != null && basePortfolio.getStockQuantity(s) > 0) {
+            basePortfolio.removeStock(s, quantitySold);
             double netChange = s.getNetChange() * quantitySold;
             setMoney(netChange);
             sold = true;
