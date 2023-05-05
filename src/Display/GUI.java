@@ -26,7 +26,6 @@ public class GUI {
     public static void hideBuyWindow() {
         if (buyWindow == null) return;
         buyWindow.setVisible(false);
-        buyWindow.dispose();
     }
 
     public static void showSellWindow() {
@@ -36,7 +35,6 @@ public class GUI {
             sellWindow.pack();
             sellWindow.setLocationRelativeTo(null);
         }
-
         sellWindow.setVisible(true);
     }
 
@@ -44,6 +42,7 @@ public class GUI {
         if (sellWindow == null) return;
         sellWindow.setVisible(false);
         sellWindow.dispose();
+        sellWindow = null;
     }
 
     public static void showBankWindow() {
@@ -61,6 +60,7 @@ public class GUI {
         if (bankWindow == null) return;
         bankWindow.setVisible(false);
         bankWindow.dispose();
+        bankWindow = null;
     }
 
     public static void invalidPopup(String reason) {
