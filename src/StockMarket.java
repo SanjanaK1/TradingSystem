@@ -62,6 +62,10 @@ public class StockMarket {
         return isStockInMarket;
     }
 
+    public static Stock[] getAllStockArray() {
+        return stockListOnMarket.keySet().toArray(new Stock[0]);
+    }
+
     public static Map<Stock, Integer> addStocksToMarket( Map<Stock, Integer> stockListOnMarket)
     {
         stockListOnMarket = new HashMap<Stock, Integer>();
@@ -90,6 +94,24 @@ public class StockMarket {
             Integer value = entry.getValue();
             System.out.println(key + ": " + value);
         }
+    }
+
+    public static String[] getAllStockPricesArray() {
+        Stock[] stockArray = getAllStockArray();
+        String[] stockPrices = new String[stockArray.length];
+        for (int i = 0; i < stockArray.length; i++) {
+            stockPrices[i] = String.valueOf(stockArray[i].getCurrentPrice());
+        }
+        return stockPrices;
+    }
+
+    public static String[] getAllStockNames() {
+        Stock[] stockArray = getAllStockArray();
+        String[] stockNames = new String[stockArray.length];
+        for (int i = 0; i < stockArray.length; i++) {
+            stockNames[i] = stockArray[i].getName();
+        }
+        return stockNames;
     }
 
     public static int findGreatestQuantityAvailableForPurchase(Stock s, double currentMoney) {

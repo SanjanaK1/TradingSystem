@@ -7,8 +7,9 @@ public class DisplayFacade {
     public static String[] getTableHeader(){
         return tableHeaders;
     }
+
     public static String[][] getTableData(){
-        return new String[][]{{"Stock Example", "2$", "4", "8$"},{"B1", "B2"}}; //TODO
+        return c.getStocksListInformation();
     }
 
     public static String getUserName(){
@@ -28,19 +29,20 @@ public class DisplayFacade {
 
     //Doesn't have to be STRING. Could be int of a stock id, or however stocks are internally represented.
     public static String[] getOwnedStockNames(){
-        return new String[]{"Example 1", "Example 2"}; //TODO
+        return c.getPortfolio().getStockNames();
     }
+
     public static int[] getOwnedStockAmounts(){
-        return new int[]{1, 2}; //TODO
+        return c.getPortfolio().getStockAmountsOwned();
     }
 
 
     public static String[] getAllStockNames() {
-        return new String[]{"Example 1", "Example 2"}; //TODO
+        return StockMarket.getAllStockNames();
     }
 
     public static String[] getAllStockPrices() {
-        return new String[]{"$Example 1", "$Example 2"}; //TODO
+        return StockMarket.getAllStockPricesArray();
     }
 
     public static void setCustomer(Customer c) {
@@ -68,11 +70,11 @@ public class DisplayFacade {
     }
 
     public static Stock[] getOwnedStocks() {
-        return new Stock[] {new Stock("Example 1", 1), new Stock("Example 2", 2)}; //TODO
+        return c.getPortfolio().getStockArray(); //TODO
     }
 
 
     public static Stock[] getAllStocks() {
-        return new Stock[] {new Stock("Example 1", 1), new Stock("Example 2", 2)}; //TODO
+        return StockMarket.getAllStockArray();
     }
 }
