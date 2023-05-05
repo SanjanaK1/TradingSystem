@@ -30,9 +30,15 @@ public class BuyWindow {
         buyButton.addActionListener(e -> {
             buy();
         });
+        refreshTableButton.addActionListener(e -> {
+            update();
+        });
 
+        update();
+    }
+
+    private void update() {
         stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
-
         comboBox1.setModel(new DefaultComboBoxModel(DisplayFacade.getAllStockNames()));
     }
 
@@ -45,4 +51,6 @@ public class BuyWindow {
             GUI.invalidPopup("Buy Failed");
         }
     }
+
+
 }
