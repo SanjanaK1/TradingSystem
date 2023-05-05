@@ -12,9 +12,8 @@ public class StockMarket {
     // mapping between Stock and quantities available
     private static Map<Stock, Integer> stockListOnMarket;
 
-    public static void main(String args[])
-    {
-        addStocksToMarket(stockListOnMarket);
+    public static void main(String[] args) {
+        addStocksToMarket();
         printStocks();
     }
 
@@ -66,29 +65,27 @@ public class StockMarket {
         return stockListOnMarket.keySet().toArray(new Stock[0]);
     }
 
-    public static Map<Stock, Integer> addStocksToMarket( Map<Stock, Integer> stockListOnMarket)
-    {
-        stockListOnMarket = new HashMap<Stock, Integer>();
+    public static void addStocksToMarket() {
+        stockListOnMarket = new HashMap<>();
         //read from stocks.txt
-        String fileName = "C:\\Users\\17322\\HighSchool\\TradingSystem\\src\\stocks.txt";
+        String fileName = "src/TXT Files/stocks.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] tokens = line.split("\\s+");
                 String name = tokens[0];
-                Double price = Double.parseDouble(tokens[1]);
+                double price = Double.parseDouble(tokens[1]);
                 Stock stock = new Stock(name,price);
-                Integer amountOfStock = Integer.parseInt(tokens[2]);
+                int amountOfStock = Integer.parseInt(tokens[2]);
                 stockListOnMarket.put(stock, amountOfStock);
             }
-            return stockListOnMarket;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-    public static void printStocks()
-    {
+
+    public static void printStocks() {
         for (Map.Entry<Stock, Integer> entry : stockListOnMarket.entrySet()) {
             Stock key = entry.getKey();
             Integer value = entry.getValue();
