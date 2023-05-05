@@ -8,7 +8,7 @@ public class DisplayFacade {
         return tableHeaders;
     }
     public static String[][] getTableData(){
-        return new String[][]{{"Stock Example", "2$", "4", "8$"},{"B1", "B2"}};
+        return new String[][]{{"Stock Example", "2$", "4", "8$"},{"B1", "B2"}}; //TODO
     }
 
     public static String getUserName(){
@@ -68,11 +68,11 @@ public class DisplayFacade {
     }
 
     public static Stock[] getOwnedStocks() {
-        return new Stock[] {new Stock("Example 1", 1), new Stock("Example 2", 2)};
+        return new Stock[] {new Stock("Example 1", 1), new Stock("Example 2", 2)}; //TODO
     }
 
 
     public static Stock[] getAllStocks() {
-        return new Stock[] {new Stock("Example 1", 1), new Stock("Example 2", 2)};
+        return new Stock[] {new Stock("Example 1", 1), new Stock("Example 2", 2)}; //TODO
     }
 }
