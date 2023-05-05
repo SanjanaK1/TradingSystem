@@ -39,7 +39,7 @@ public class SellWindow {
     private void sell() {
         GUI.hideSellWindow();
 
-        if(DisplayFacade.sell(comboBox1.getSelectedIndex(), (int)spinner1.getValue())){
+        if(DisplayFacade.sell(comboBox1.getSelectedIndex(), (Integer)spinner1.getValue())){
             //nothing
         } else {
             GUI.invalidPopup("Sell Failed");
