@@ -1,5 +1,4 @@
 public class DisplayFacade {
-
     private static Customer c;
     public static int numAttributesToDisplay = 6;
     public static String[] tableHeaders = new String[]{"Stock Name", "Current Value ($)", "Number Owned", "Total Value ($)", "Bought Value ($)", "Delta ($)"};
@@ -9,6 +8,7 @@ public class DisplayFacade {
     }
 
     public static String[][] getTableData(){
+        if (c == null) return null;
         return c.getStocksListInformation();
     }
 
@@ -72,7 +72,6 @@ public class DisplayFacade {
     public static Stock[] getOwnedStocks() {
         return c.getPortfolio().getStockArray(); //TODO
     }
-
 
     public static Stock[] getAllStocks() {
         return StockMarket.getAllStockArray();
