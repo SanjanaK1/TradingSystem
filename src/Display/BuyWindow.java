@@ -30,19 +30,27 @@ public class BuyWindow {
         buyButton.addActionListener(e -> {
             buy();
         });
+        refreshTableButton.addActionListener(e -> {
+            update();
+        });
 
+        update();
+    }
+
+    private void update() {
         stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
-
         comboBox1.setModel(new DefaultComboBoxModel(DisplayFacade.getAllStockNames()));
     }
 
     private void buy() {
         GUI.hideBuyWindow();
 
-        if(DisplayFacade.buy(comboBox1.getSelectedIndex(), (int)spinner1.getValue())){
+        if(DisplayFacade.buy(comboBox1.getSelectedIndex(), (Integer)spinner1.getValue())){
             //nothing
         } else {
             GUI.invalidPopup("Buy Failed");
         }
     }
+
+
 }

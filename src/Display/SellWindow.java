@@ -30,19 +30,25 @@ public class SellWindow {
         sellButton.addActionListener(e -> {
             sell();
         });
+        refreshTableButton.addActionListener(e -> {
+            update();
+        });
 
-        stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
-
-        comboBox1.setModel(new DefaultComboBoxModel(DisplayFacade.getOwnedStockNames()));
+        update();
     }
 
     private void sell() {
         GUI.hideSellWindow();
 
-        if(DisplayFacade.sell(comboBox1.getSelectedIndex(), (int)spinner1.getValue())){
+        if(DisplayFacade.sell(comboBox1.getSelectedIndex(), (Integer)spinner1.getValue())){
             //nothing
         } else {
             GUI.invalidPopup("Sell Failed");
         }
+    }
+
+    private void update(){
+        stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
+        comboBox1.setModel(new DefaultComboBoxModel(DisplayFacade.getOwnedStockNames()));
     }
 }

@@ -20,7 +20,6 @@ public class GUI {
             buyWindow.pack();
             buyWindow.setLocationRelativeTo(null);
         }
-
         buyWindow.setVisible(true);
     }
 
@@ -36,13 +35,14 @@ public class GUI {
             sellWindow.pack();
             sellWindow.setLocationRelativeTo(null);
         }
-
         sellWindow.setVisible(true);
     }
 
     public static void hideSellWindow() {
         if (sellWindow == null) return;
         sellWindow.setVisible(false);
+        sellWindow.dispose();
+        sellWindow = null;
     }
 
     public static void showBankWindow() {
@@ -59,6 +59,8 @@ public class GUI {
     public static void hideBankWindow() {
         if (bankWindow == null) return;
         bankWindow.setVisible(false);
+        bankWindow.dispose();
+        bankWindow = null;
     }
 
     public static void invalidPopup(String reason) {
