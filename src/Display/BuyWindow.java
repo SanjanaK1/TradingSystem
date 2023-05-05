@@ -29,5 +29,7 @@ public class BuyWindow {
         });
 
         stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
+
+        comboBox1.setModel(new DefaultComboBoxModel(DisplayFacade.getAllStockNames()));
     }
 }

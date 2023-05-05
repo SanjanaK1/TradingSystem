@@ -27,16 +27,20 @@ public class DisplayFacade {
     }
 
     //Doesn't have to be STRING. Could be int of a stock id, or however stocks are internally represented.
-    public static String[] getOwnedStockNames(){return null;}
-    public static int[] getOwnedStockAmounts(){return null;}
+    public static String[] getOwnedStockNames(){
+        return new String[]{"Example 1", "Example 2"}; //TODO
+    }
+    public static int[] getOwnedStockAmounts(){
+        return new int[]{1, 2}; //TODO
+    }
 
 
     public static String[] getAllStockNames() {
-        return null;
+        return new String[]{"Example 1", "Example 2"}; //TODO
     }
 
     public static String[] getAllStockPrices() {
-        return null;
+        return new String[]{"$Example 1", "$Example 2"}; //TODO
     }
 
     public static void setCustomer(Customer c) {
