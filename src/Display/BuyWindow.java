@@ -5,7 +5,7 @@ public class BuyWindow {
     private JComboBox comboBox1;
     private JSpinner spinner1;
     private JButton cancelButton;
-    private JButton buyButton2;
+    private JButton buyButton;
     JPanel panel;
     private JTable stockTable;
     private JButton refreshTableButton;
@@ -27,9 +27,22 @@ public class BuyWindow {
         cancelButton.addActionListener(e -> {
             GUI.hideBuyWindow();
         });
+        buyButton.addActionListener(e -> {
+            buy();
+        });
 
         stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
 
         comboBox1.setModel(new DefaultComboBoxModel(DisplayFacade.getAllStockNames()));
+    }
+
+    private void buy() {
+        GUI.hideBuyWindow();
+
+        if(DisplayFacade.buy(comboBox1.getSelectedIndex(), (int)spinner1.getValue())){
+            //nothing
+        } else {
+            GUI.invalidPopup("Buy Failed");
+        }
     }
 }

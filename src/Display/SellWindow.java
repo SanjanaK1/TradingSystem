@@ -25,11 +25,24 @@ public class SellWindow {
 
     private void initComponents() {
         cancelButton.addActionListener(e -> {
-                GUI.hideSellWindow();
+            GUI.hideSellWindow();
+        });
+        sellButton.addActionListener(e -> {
+            sell();
         });
 
         stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
 
         comboBox1.setModel(new DefaultComboBoxModel(DisplayFacade.getOwnedStockNames()));
+    }
+
+    private void sell() {
+        GUI.hideSellWindow();
+
+        if(DisplayFacade.sell(comboBox1.getSelectedIndex(), (int)spinner1.getValue())){
+            //nothing
+        } else {
+            GUI.invalidPopup("Sell Failed");
+        }
     }
 }

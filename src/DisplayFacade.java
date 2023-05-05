@@ -57,4 +57,22 @@ public class DisplayFacade {
         return MarketSystemFacade.sellStock(c, s, quantity);
     }
 
+    public static boolean sell(int index, int quantity) {
+        if (c == null) return false;
+        return MarketSystemFacade.sellStock(c, getOwnedStocks()[index], quantity);
+    }
+
+    public static boolean buy(int index, int quantity) {
+        if (c == null) return false;
+        return MarketSystemFacade.buyStock(c, getAllStocks()[index], quantity);
+    }
+
+    public static Stock[] getOwnedStocks() {
+        return new Stock[] {new Stock("Example 1", 1), new Stock("Example 2", 2)};
+    }
+
+
+    public static Stock[] getAllStocks() {
+        return new Stock[] {new Stock("Example 1", 1), new Stock("Example 2", 2)};
+    }
 }

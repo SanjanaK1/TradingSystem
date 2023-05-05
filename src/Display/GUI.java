@@ -61,10 +61,15 @@ public class GUI {
         bankWindow.setVisible(false);
     }
 
-    public static void invalidPopup() {
-        InvalidPopup dialog = new InvalidPopup("Test invalid");
+    public static void invalidPopup(String reason) {
+        InvalidPopup dialog = new InvalidPopup(reason);
         dialog.pack();
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
+    }
+
+
+    public static void invalidPopup() {
+        invalidPopup("");
     }
 }
