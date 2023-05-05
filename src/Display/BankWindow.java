@@ -26,5 +26,35 @@ public class BankWindow {
         cancelButton.addActionListener(e -> {
             GUI.hideBankWindow();
         });
+        depositButton.addActionListener(e -> {
+            deposit();
+        });
+        withdrawButton.addActionListener(e -> {
+            withdraw();
+        });
+    }
+
+    private void withdraw() {
+        GUI.hideBankWindow();
+
+        if (DisplayFacade.withdraw((Double)amountSpinner.getValue())){
+            //success
+        } else {
+            GUI.invalidPopup("Cannot Withdraw amount");
+        }
+    }
+
+    private void deposit() {
+        GUI.hideBankWindow();
+
+        if (DisplayFacade.deposit((Double)amountSpinner.getValue())){
+            //success
+        } else {
+            GUI.invalidPopup("Cannot Deposit amount");
+        }
+    }
+
+    private void update() {
+        amountLabel.setText(DisplayFacade.getLiquid());
     }
 }

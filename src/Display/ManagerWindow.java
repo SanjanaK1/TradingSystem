@@ -9,4 +9,12 @@ public class ManagerWindow {
     private JComboBox portfolioComboBox;
     private JButton loadButton;
     private JButton saveButton;
+    
+    public ManagerWindow(){
+        initComponents();
+    }
+
+    private void initComponents() {
+
+    }
 }

@@ -76,4 +76,25 @@ public class DisplayFacade {
     public static Stock[] getAllStocks() {
         return StockMarket.getAllStockArray();
     }
+
+    public static boolean deposit(Double d){
+        return false;
+    }
+
+    public static boolean withdraw(Double d){
+        return false;
+    }
+
+    public static Customer[] getAllCustomers(){
+        //TODO from file
+        return new Customer[]{};
+    }
+
+    public static String[][] getStockFile(){
+        //TODO from file
+        return new String[][]{{"AMAZON", "20.23"},{"Example 2", "21"}};
+    }
+    public static void setStockFile(){
+        //TODO from file
+    }
 }
