@@ -12,4 +12,7 @@ public class DisplayTableModel extends DefaultTableModel {
     public void test(){
         addRow(new String[] {"Test Row", "1", "2", "3"});
     }
+
+    public void truncate(int i) {
+    }
 }

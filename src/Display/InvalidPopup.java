@@ -37,6 +37,11 @@ public class InvalidPopup extends JDialog {
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
+    public InvalidPopup(String reason) {
+        this();
+        label1.setText(reason);
+    }
+
     private void onCancel() {
         // add your code here
         dispose();

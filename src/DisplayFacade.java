@@ -12,14 +12,17 @@ public class DisplayFacade {
     }
 
     public static String getUserName(){
-        return "TODO";
+        if (DisplayFacade.c != null) return c.getName();
+        return "ACCOUNT NOT FOUND";
     }
 
     public static String getTotal() {
+        if (DisplayFacade.c != null) return Double.toString(c.getNetValue());
         return "0$";
     }
 
     public static String getLiquid() {
+        if (DisplayFacade.c != null) return Double.toString(c.getMoney());
         return "0$";
     }
 
@@ -27,7 +30,27 @@ public class DisplayFacade {
     public static String[] getOwnedStockNames(){return null;}
     public static int[] getOwnedStockAmounts(){return null;}
 
+
+    public static String[] getAllStockNames() {
+        return null;
+    }
+
+    public static String[] getAllStockPrices() {
+        return null;
+    }
+
     public static void setCustomer(Customer c) {
         DisplayFacade.c = c;
     }
+
+    public static boolean buy(Stock s, int quantity) {
+        if (c == null) return false;
+        return MarketSystemFacade.buyStock(c, s, quantity);
+    }
+
+    public static boolean sell(Stock s, int quantity) {
+        if (c == null) return false;
+        return MarketSystemFacade.sellStock(c, s, quantity);
+    }
+
 }

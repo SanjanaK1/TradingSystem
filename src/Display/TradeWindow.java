@@ -88,6 +88,7 @@ public class TradeWindow {
         totalAssetLabel.setText(DisplayFacade.getTotal());
         liquidAssetLabel.setText(DisplayFacade.getLiquid());
         //stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
+        stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
         ((DisplayTableModel) stockTable.getModel()).test();
         GUI.invalidPopup();
     }

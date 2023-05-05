@@ -62,7 +62,7 @@ public class GUI {
     }
 
     public static void invalidPopup() {
-        InvalidPopup dialog = new InvalidPopup();
+        InvalidPopup dialog = new InvalidPopup("Test invalid");
         dialog.pack();
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
