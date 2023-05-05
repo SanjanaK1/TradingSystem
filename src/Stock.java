@@ -10,6 +10,12 @@ public class Stock extends Observable implements Tradeable {
     private String name;
     private int quantity;
 
+    public Stock(String name, double price) {
+        this.name = name;
+        this.currentPrice = price;
+
+    }
+
     public double getBoughtPrice() {
         return boughtPrice;
     }
@@ -57,7 +63,11 @@ public class Stock extends Observable implements Tradeable {
         this.dateSold = dateSold;
     }
 
-    @Override
+    public String toString()
+    {
+        return name;
+    }
+
     public int getQuantity() {
         return quantity;
     }
