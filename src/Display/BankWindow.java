@@ -32,6 +32,8 @@ public class BankWindow {
         withdrawButton.addActionListener(e -> {
             withdraw();
         });
+
+        update();
     }
 
     private void withdraw() {
