@@ -9,6 +9,7 @@ import java.util.Set;
 
 public class StockMarket {
 
+    // mapping between Stock and quantities available
     private static Map<Stock, Integer> stockListOnMarket;
 
     public static void main(String args[])
@@ -25,7 +26,6 @@ public class StockMarket {
             stockListOnMarket.replace(s, currentStockQuantity - quantityBought);
             isSuccessfulPurchase = true;
         }
-
         return isSuccessfulPurchase;
     }
 
@@ -42,7 +42,15 @@ public class StockMarket {
         return isSuccessfulSell;
     }
 
-    private Map<Stock, Integer> getStocks() {
+    public static int getQuantityAvailable(Stock s) {
+        if (isStockInMarket(s)) {
+            return stockListOnMarket.get(s);
+        } else {
+            return -1;
+        }
+    }
+
+    private static Map<Stock, Integer> getStocks() {
         return stockListOnMarket;
     }
 
@@ -84,4 +92,17 @@ public class StockMarket {
         }
     }
 
+    public static int findGreatestQuantityAvailableForPurchase(Stock s, double currentMoney) {
+        int quantityCurrentlyAvailable = getQuantityAvailable(s);
+        int highestQuantityAvailableForPurchase = 0;
+        if (quantityCurrentlyAvailable > 0) {
+            for (int i = quantityCurrentlyAvailable; i > 0; i--) {
+                if (i * s.getCurrentPrice() <= currentMoney) {
+                    highestQuantityAvailableForPurchase = i;
+                    break;
+                }
+            }
+        }
+        return highestQuantityAvailableForPurchase;
+    }
 }

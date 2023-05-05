@@ -1,13 +1,16 @@
-;
-public class Stock implements Tradeable{
+
+import java.util.Observable;
+
+public class Stock extends Observable implements Tradeable {
 
     private double boughtPrice;
     private double currentPrice;
     private Date datePurchased;
     private Date dateSold;
     private String name;
+    private int quantity;
 
-    public Stock(String name, double price){
+    public Stock(String name, double price) {
         this.name = name;
         this.currentPrice = price;
 
@@ -34,6 +37,9 @@ public class Stock implements Tradeable{
     }
 
     public void setCurrentPrice(double currentPrice) {
+        if (this.getCurrentPrice() != currentPrice) {
+            notifyObservers();
+        }
         this.currentPrice = currentPrice;
     }
 
@@ -57,8 +63,16 @@ public class Stock implements Tradeable{
         this.dateSold = dateSold;
     }
 
-    @Override
-    public String toString() {
+    public String toString()
+    {
         return name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

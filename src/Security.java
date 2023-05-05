@@ -66,5 +66,7 @@ public class Security
         }
     }
 
-
+    private static void setCustomer(Customer c) {
+        DisplayFacade.setCustomer(c);
+    }
 }

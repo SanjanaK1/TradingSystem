@@ -1,10 +1,3 @@
-;
-//observer pattern
-//singleton pattern
-
-
-// Class implements singleton pattern.
-
 import java.util.*;
 
 public class PortfolioManager extends Person{

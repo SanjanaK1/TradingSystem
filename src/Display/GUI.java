@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class GUI {
     private static JFrame buyWindow, tradeWindow, sellWindow, bankWindow;
@@ -8,6 +9,7 @@ public class GUI {
         frame.setContentPane(new TradeWindow().panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
@@ -16,6 +18,7 @@ public class GUI {
             buyWindow = new JFrame("BuyWindow");
             buyWindow.setContentPane(new BuyWindow().panel);
             buyWindow.pack();
+            buyWindow.setLocationRelativeTo(null);
         }
 
         buyWindow.setVisible(true);
@@ -31,6 +34,7 @@ public class GUI {
             sellWindow = new JFrame("SellWindow");
             sellWindow.setContentPane(new SellWindow().panel);
             sellWindow.pack();
+            sellWindow.setLocationRelativeTo(null);
         }
 
         sellWindow.setVisible(true);
@@ -46,6 +50,7 @@ public class GUI {
             bankWindow = new JFrame("BankWindow");
             bankWindow.setContentPane(new BankWindow().panel);
             bankWindow.pack();
+            bankWindow.setLocationRelativeTo(null);
         }
 
         bankWindow.setVisible(true);
@@ -54,5 +59,12 @@ public class GUI {
     public static void hideBankWindow() {
         if (bankWindow == null) return;
         bankWindow.setVisible(false);
+    }
+
+    public static void invalidPopup() {
+        InvalidPopup dialog = new InvalidPopup();
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
     }
 }

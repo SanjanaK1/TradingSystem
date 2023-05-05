@@ -20,6 +20,7 @@ public class TradeWindow {
     private JButton refreshTableButton;
     private JLabel totalAssetLabel;
     private JLabel liquidAssetLabel;
+    private JLabel moneyLabel;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("TradeWindow");
@@ -32,7 +33,7 @@ public class TradeWindow {
     public TradeWindow(){
         initComponents();
 
-        panel.setPreferredSize(new Dimension(600,400));
+        panel.setPreferredSize(new Dimension(800,600));
     }
 
     private void initComponents() {
@@ -42,34 +43,32 @@ public class TradeWindow {
         liquidAssetLabel.setText(DisplayFacade.getLiquid());
         stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
 
+        moneyLabel.setIcon(IconCreator.createImageIcon("rsc/money2.gif", "money"));
 
 
         //Add action listeners to buttons
-        buyButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                buy();
-            }
+        detailsButton.addActionListener(e -> {
+            info();
         });
-        sellButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                sell();
-            }
+        buyButton.addActionListener(e -> {
+            buy();
         });
-        bankButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                bank();
-            }
+        sellButton.addActionListener(e -> {
+            sell();
         });
+        bankButton.addActionListener(e -> {
+            bank();
+        });
+        refreshTableButton.addActionListener(ne -> {
+            update();
+        });
+    }
 
-        refreshTableButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                update();
-            }
-        });
+    private void info() {
+        InfoWindow info = new InfoWindow();
+        info.pack();
+        info.setLocationRelativeTo(null);
+        info.setVisible(true);
     }
 
     private void bank() {
@@ -90,6 +89,7 @@ public class TradeWindow {
         liquidAssetLabel.setText(DisplayFacade.getLiquid());
         //stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
         ((DisplayTableModel) stockTable.getModel()).test();
+        GUI.invalidPopup();
     }
 
 }

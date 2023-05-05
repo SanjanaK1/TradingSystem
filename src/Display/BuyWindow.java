@@ -25,7 +25,7 @@ public class BuyWindow {
 
     private void initComponents() {
         cancelButton.addActionListener(e -> {
-            GUI.hideSellWindow();
+            GUI.hideBuyWindow();
         });
 
         stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
