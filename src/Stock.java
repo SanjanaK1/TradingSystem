@@ -7,6 +7,12 @@ public class Stock implements Tradeable{
     private Date dateSold;
     private String name;
 
+    public Stock(String name, double price){
+        this.name = name;
+        this.currentPrice = price;
+
+    }
+
     public double getBoughtPrice() {
         return boughtPrice;
     }
@@ -52,14 +58,7 @@ public class Stock implements Tradeable{
     }
 
     @Override
-    public boolean buyStock(Stock s, int quantityBought) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buyStock'");
-    }
-
-    @Override
-    public boolean sellStock(Stock s, int quantitySold) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sellStock'");
+    public String toString() {
+        return name;
     }
 }

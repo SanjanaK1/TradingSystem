@@ -8,15 +8,11 @@ import java.io.BufferedWriter;
 
 public class Security 
 {
-
-    /*public static void main(String args[]) throws IOException{
-        login("eli", "000");
-    } */
+    public static void main(String args[]) throws IOException{
+        createAccount("eli", "000");
+    }
 
     public static boolean login(String username, String password) throws IOException {
-        //Read in usernames and passwords from text file
-        // go through usernames in the entire file
-        //Users.txt
         
         try {
             BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\17322\\HighSchool\\TradingSystem\\src\\TXT Files\\Users.txt"));
@@ -33,7 +29,6 @@ public class Security
                     if(passwordTxt.equals(password))
                     {
                         System.out.println("Successfully logged in, opening your client window");
-                        //TODO once user has successfully logged in open their client window
                         return true;
                     }
                     else{
@@ -46,33 +41,29 @@ public class Security
             }
             
             System.out.println("This user does not exist, please create an account first");
-            
-            
+
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return false;
 
-
     }
 
     public static boolean createAccount(String username, String password) throws IOException {
         //Read in usernames and passwords from text file
-        if (login(username, password) == true)
+        if (login(username, password) == true) {
             System.out.println("user exists already");
+            return false;
+        }
         else{
             FileWriter fileWriter = new FileWriter("C:\\Users\\17322\\HighSchool\\TradingSystem\\src\\TXT Files\\Users.txt", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(username+"\t"+password+"\n");
             bufferedWriter.close();
 
-            //If username matches existing account, return false
-
             return true;
-
         }
-        return true;
     }
 
 
