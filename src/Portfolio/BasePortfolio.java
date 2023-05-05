@@ -143,4 +143,22 @@ public class BasePortfolio implements Portfolio, Observer {
     public int getStockListCount() {
         return this.stockList.size();
     }
+
+    public int[] getStockAmountsOwned() {
+        Stock[] stockArray = getStockArray();
+        int[] stockAmountsOwned = new int[stockArray.length];
+        for (int i = 0; i < stockAmountsOwned.length; i++) {
+            stockAmountsOwned[i] = stockArray[i].getQuantity();
+        }
+        return stockAmountsOwned;
+    }
+
+    public String[] getStockNames() {
+        Stock[] stockArray = getStockArray();
+        String[] stockNames = new String[stockArray.length];
+        for (int i = 0; i < stockNames.length; i++) {
+            stockNames[i] = stockArray[i].getName();
+        }
+        return stockNames;
+    }
 }
