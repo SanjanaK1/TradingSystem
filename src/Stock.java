@@ -5,8 +5,8 @@ public class Stock extends Observable implements Tradeable {
 
     private double boughtPrice;
     private double currentPrice;
-    private Date datePurchased;
-    private Date dateSold;
+    private Date datePurchased; // todo implement usage
+    private Date dateSold; // todo implement usage
     private String name;
     private int quantity;
 
