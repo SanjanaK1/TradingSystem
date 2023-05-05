@@ -7,6 +7,11 @@ public class InfoWindow extends JDialog {
     private JButton buttonCancel;
     private JLabel textLabel;
 
+    public InfoWindow(String info) {
+        this();
+        textLabel.setText(DisplayFacade.getDetailedInfo());
+    }
+
     public InfoWindow() {
         setContentPane(contentPane);
         setModal(true);

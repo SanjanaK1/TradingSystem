@@ -97,4 +97,13 @@ public class DisplayFacade {
     public static void setStockFile(){
         //TODO from file
     }
+
+    public static String getDetailedInfo() {
+        //TODO
+        if (DisplayFacade.c == null) return "ACCOUNT NOT FOUND";
+        return "Account Value: " + getTotal()
+                + "\nLiquid Assets: " + getLiquid()
+                + "\nUnrealized gains: " + 0 //TODO Delta Here
+                + "\n...";
+    }
 }
