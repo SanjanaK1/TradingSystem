@@ -1,5 +1,2 @@
-Bob 123
-cam abc
-dan qwe
-eli	000
-gil	111
+sam	111
+jen	123

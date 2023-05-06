@@ -67,7 +67,6 @@ public class StockMarket {
 
     public static void addStocksToMarket() {
         stockListOnMarket = new HashMap<>();
-        //read from stocks.txt
         String fileName = "src/TXT Files/stocks.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
