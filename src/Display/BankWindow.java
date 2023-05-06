@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.text.NumberFormatter;
 import java.awt.*;
 
 public class BankWindow {
@@ -8,6 +9,7 @@ public class BankWindow {
     JPanel panel;
     private JLabel amountLabel;
     private JButton cancelButton;
+    private JFormattedTextField amountFormattedTextField;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("BankWindow");
@@ -39,7 +41,16 @@ public class BankWindow {
     private void withdraw() {
         GUI.hideBankWindow();
 
-        if (DisplayFacade.withdraw((Double)amountSpinner.getValue())){
+        double d = 0;
+        try {
+            d = Double.parseDouble(amountFormattedTextField.getText());
+        }
+        catch (Exception e) {
+            GUI.invalidPopup("Not a valid amount");
+            return;
+        }
+
+        if (DisplayFacade.withdraw(d)) {
             //success
         } else {
             GUI.invalidPopup("Cannot Withdraw amount");
@@ -48,8 +59,16 @@ public class BankWindow {
 
     private void deposit() {
         GUI.hideBankWindow();
+        double d = 0;
+        try {
+            d = Double.parseDouble(amountFormattedTextField.getText());
+        }
+        catch (Exception e) {
+            GUI.invalidPopup("Not a valid amount");
+            return;
+        }
 
-        if (DisplayFacade.deposit((Double)amountSpinner.getValue())){
+        if (DisplayFacade.deposit(d)) {
             //success
         } else {
             GUI.invalidPopup("Cannot Deposit amount");
@@ -58,5 +77,9 @@ public class BankWindow {
 
     private void update() {
         amountLabel.setText(DisplayFacade.getLiquid());
+    }
+
+    private void createUIComponents() {
+        amountFormattedTextField = new JFormattedTextField(new NumberFormatter());
     }
 }

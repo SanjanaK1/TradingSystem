@@ -106,4 +106,8 @@ public class DisplayFacade {
                 + "\nUnrealized gains: " + 0 //TODO Delta Here
                 + "\n...";
     }
+
+    public static String[] getStockFileHeader() {
+        return new String[]{"Stock Name", "Stock Price", "Quantity"};
+    }
 }

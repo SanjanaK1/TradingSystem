@@ -15,6 +15,6 @@ public class ManagerWindow {
     }
 
     private void initComponents() {
-
+        stockTable.setModel(new StockManagerTableModel(DisplayFacade.getStockFile(), DisplayFacade.getStockFileHeader()));
     }
 }
