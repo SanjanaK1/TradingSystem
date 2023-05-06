@@ -15,6 +15,16 @@ public class Date {
         setDay(day);
     }
 
+    public static Date parseDate(String s) {
+        String[] dateSplitString = s.split("-");
+        int[] dateSplit = new int[dateSplitString.length];
+        for (int i = 0; i < dateSplit.length; i++) {
+            dateSplit[i] = Integer.parseInt(dateSplitString[i]);
+        }
+        Date d = new Date(dateSplit[0], dateSplit[1], dateSplit[2]);
+        return d;
+    }
+
     public int getMonth() {
         return month;
     }

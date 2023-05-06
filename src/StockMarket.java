@@ -12,11 +12,6 @@ public class StockMarket {
     // mapping between Stock and quantities available
     private static Map<Stock, Integer> stockListOnMarket;
 
-    public static void main(String[] args) {
-        addStocksToMarket();
-        printStocks();
-    }
-
     public static boolean purchase(Stock s, int quantityBought) {
         boolean isSuccessfulPurchase = false;
         boolean isStockInMarket = isStockInMarket(s);
@@ -65,26 +60,6 @@ public class StockMarket {
         return stockListOnMarket.keySet().toArray(new Stock[0]);
     }
 
-    public static void addStocksToMarket() {
-        stockListOnMarket = new HashMap<>();
-        //read from stocks.txt
-        String fileName = "src/TXT Files/stocks.txt";
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            br.readLine();
-            while ((line = br.readLine()) != null) {
-                String[] tokens = line.split("\\s+");
-                String name = tokens[0];
-                double price = Double.parseDouble(tokens[1]);
-                Stock stock = new Stock(name,price);
-                int amountOfStock = Integer.parseInt(tokens[2]);
-                stockListOnMarket.put(stock, amountOfStock);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public static void printStocks() {
         for (Map.Entry<Stock, Integer> entry : stockListOnMarket.entrySet()) {
             Stock key = entry.getKey();
@@ -123,5 +98,21 @@ public class StockMarket {
             }
         }
         return highestQuantityAvailableForPurchase;
+    }
+
+    public static void addStock(Stock stock, int amountOfStock) {
+        assert stock != null && amountOfStock >= 0;
+        stockListOnMarket.put(stock, amountOfStock);
+    }
+
+    public static Stock getStockByName(String name) {
+        Stock toReturn = null;
+        Stock[] stockArray = getAllStockArray();
+        for (int i = 0; i < stockArray.length; i++) {
+            if (stockArray[i].getName().equals(name)) {
+                toReturn = stockArray[i];
+            }
+        }
+        return toReturn;
     }
 }

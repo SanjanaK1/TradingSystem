@@ -6,12 +6,14 @@ public class Customer extends Person {
     private boolean approved = false ; //0 = not approved
     private double money;
     private Portfolio portfolio = new BasePortfolio(null);
+    private boolean isEligibleForDerivative = false;
 
-    public Customer(String name, boolean isApproved, double money, Portfolio p) {
+    public Customer(String name, boolean isApproved, double money, Portfolio p, boolean isEligibleForDerivative) {
         super(name);
         setApproved(isApproved);
         setMoney(money);
         setPortfolio(p);
+        setEligibleForDerivative(isEligibleForDerivative);
     }
 
     public boolean isApproved() {
@@ -91,5 +93,13 @@ public class Customer extends Person {
 
         }
         return stockListInformation;
+    }
+
+    public boolean isEligibleForDerivative() {
+        return isEligibleForDerivative;
+    }
+
+    public void setEligibleForDerivative(boolean eligibleForDerivative) {
+        isEligibleForDerivative = eligibleForDerivative;
     }
 }

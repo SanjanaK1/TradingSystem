@@ -32,8 +32,6 @@ public class PortfolioManager extends Person{
             return isApproved;
         }
     }
-
-
     public void setApprovalThreshold(double approvalThreshold) {
         this.approvalThreshold = approvalThreshold;
     }
