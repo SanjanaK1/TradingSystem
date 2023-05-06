@@ -1,11 +1,14 @@
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Security 
 {
-    public static void main(String args[]) throws IOException{
-        createAccount("eli", "000");
-    }
+    private static Customer c;
+    private static BasePortfolio basePortfolio = new BasePortfolio( new HashMap<Stock, Integer>());
+    /* public static void main(String args[]) throws IOException{
+            createAccount("eli", "000");
+        }*/
 
     public static boolean login(String username, String password) throws IOException {
         Map<String, String> customerInformation = FileHandler.loadUsers();
@@ -13,6 +16,7 @@ public class Security
         if (customerInformation.get(username) != null) {
             if (customerInformation.get(username) .equals(password)) {
                 System.out.println("Successfully logged in, opening your client window");
+
                 return true;
             } else {
                 System.out.println("Wrong password");
@@ -33,11 +37,13 @@ public class Security
         }
         else{
             FileHandler.writeToUsers(username, password);
+            c = new Customer(username, false,2500.0, basePortfolio);
+            setCustomer();
             return true;
         }
     }
 
-    private static void setCustomer(Customer c) {
+    private static void setCustomer() {
         DisplayFacade.setCustomer(c);
     }
 }
