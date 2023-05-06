@@ -29,6 +29,7 @@ public class DisplayFacade {
 
     //Doesn't have to be STRING. Could be int of a stock id, or however stocks are internally represented.
     public static String[] getOwnedStockNames(){
+        if (c == null) return new String[]{};
         return c.getPortfolio().getStockNames();
     }
 
@@ -105,5 +106,9 @@ public class DisplayFacade {
                 + "\nLiquid Assets: " + getLiquid()
                 + "\nUnrealized gains: " + 0 //TODO Delta Here
                 + "\n...";
+    }
+
+    public static String[] getStockFileHeader() {
+        return new String[]{"Stock Name", "Stock Price", "Quantity"};
     }
 }
