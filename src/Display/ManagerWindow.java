@@ -4,7 +4,7 @@ public class ManagerWindow {
     private JLabel accountNameLabel;
     private JLabel sellStocksLabel;
     private JButton sellButton;
-    private JButton detailsButton;
+    private JButton openButton;
     private JTable stockTable;
     private JComboBox portfolioComboBox;
     private JButton loadButton;
@@ -34,13 +34,22 @@ public class ManagerWindow {
         addRowButton.addActionListener(a->{
             ((StockManagerTableModel)stockTable.getModel()).newStock();
         });
+        openButton.addActionListener(a->{
+            openCustomer();
+        });
 
         portfolioComboBox.setModel(new DefaultComboBoxModel(DisplayFacade.getAllCustomers()));
 
         update();
     }
 
+    private void openCustomer() {
+        Customer c = (Customer) portfolioComboBox.getSelectedItem();
+        //TODO open customer window
+    }
+
     private void save() {
+        //TODO
     }
 
     private void update() {
