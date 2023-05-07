@@ -23,8 +23,6 @@ public class TradeWindow {
     private JLabel moneyLabel;
 
     public static void main(String[] args) {
-        StockMarket.addStocksToMarket();
-
         JFrame frame = new JFrame("TradeWindow");
         frame.setContentPane(new TradeWindow().panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -91,8 +89,9 @@ public class TradeWindow {
         liquidAssetLabel.setText(DisplayFacade.getLiquid());
         //stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
         stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
-        ((DisplayTableModel) stockTable.getModel()).test();
-        GUI.invalidPopup();
+
+        //((DisplayTableModel) stockTable.getModel()).test();
+        //GUI.invalidPopup();
     }
 
 }
