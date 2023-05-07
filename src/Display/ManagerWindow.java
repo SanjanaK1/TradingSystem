@@ -3,13 +3,13 @@ import javax.swing.*;
 public class ManagerWindow {
     private JLabel accountNameLabel;
     private JLabel sellStocksLabel;
-    private JButton sellButton;
-    private JButton detailsButton;
+    private JButton otherButton;
+    private JButton openButton;
     private JTable stockTable;
     private JComboBox portfolioComboBox;
     private JButton loadButton;
     private JButton saveButton;
-    private JPanel panel;
+    public JPanel panel;
     private JButton addRowButton;
 
     public static void main(String[] args) {
@@ -34,13 +34,30 @@ public class ManagerWindow {
         addRowButton.addActionListener(a->{
             ((StockManagerTableModel)stockTable.getModel()).newStock();
         });
+        openButton.addActionListener(a->{
+            openCustomer();
+        });
+        otherButton.addActionListener(a->{
+            openOtherOptions();
+        });
 
         portfolioComboBox.setModel(new DefaultComboBoxModel(DisplayFacade.getAllCustomers()));
 
         update();
     }
 
+    private void openOtherOptions() {
+        //more functionality here
+        JOptionPane.showMessageDialog(panel.getParent(), "Additional features would be listed here.");
+    }
+
+    private void openCustomer() {
+        Customer c = (Customer) portfolioComboBox.getSelectedItem();
+        //TODO open customer window
+    }
+
     private void save() {
+        //TODO
     }
 
     private void update() {

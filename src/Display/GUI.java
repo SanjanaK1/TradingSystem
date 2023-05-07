@@ -13,6 +13,14 @@ public class GUI {
         frame.setVisible(true);
     }
 
+    public static void managerWindow() {
+        JFrame frame = new JFrame("ManagerWindow");
+        frame.setContentPane(new ManagerWindow().panel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
     public static void showBuyWindow() {
         if (buyWindow == null) {
             buyWindow = new JFrame("BuyWindow");

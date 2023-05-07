@@ -1,3 +1,9 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class DisplayFacade {
     private static Customer c;
     public static int numAttributesToDisplay = 6;
@@ -91,9 +97,22 @@ public class DisplayFacade {
         return new Customer[]{};
     }
 
-    public static String[][] getStockFile(){
-        //TODO from file
-        return new String[][]{{"AMAZON", "20.23"},{"Example 2", "21"}};
+    public static List<String[]> getStockFile(){
+        //TODO move into fileHandler class
+        String fileName = "src/TXT Files/stocks.txt";
+        List<String[]> stockList = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            br.readLine();
+            while ((line = br.readLine()) != null) {
+                String[] tokens = line.split("\\s+");
+                stockList.add(tokens);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return stockList;
     }
     public static void setStockFile(){
         //TODO from file
