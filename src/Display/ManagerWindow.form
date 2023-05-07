@@ -149,7 +149,7 @@
           </component>
         </children>
       </grid>
-      <component id="14ef" class="javax.swing.JButton" binding="sellButton">
+      <component id="14ef" class="javax.swing.JButton" binding="otherButton">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <maximum-size width="200" height="50"/>
