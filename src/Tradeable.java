@@ -9,6 +9,4 @@ public interface Tradeable {
 
     void setQuantity(int setQuantity);
 
-
 }
-
