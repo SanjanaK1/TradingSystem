@@ -70,8 +70,16 @@ public class Customer extends Person {
         return sold;
     }
 
-    public boolean isStockInPortfolio(Stock s) {
-        return false; // todo
+    public boolean isStockInPortfolio(Stock s)
+    {
+        Stock[] stocks = portfolio.getStockArray();
+        for(Stock stock: stocks)
+        {
+            if (stock == s){
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean hasMoneyMoreThan(double amount) {
