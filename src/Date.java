@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 ;
 
 public class Date {
@@ -9,7 +12,7 @@ public class Date {
     public static final String[] monthNames = {"January", "February", "March", "April",
             "May", "June", "July", "August", "September", "October", "November", "December"};
 
-    public Date (int day, int month, int year) {
+    public Date (int year, int month, int day) {
         setYear(year);
         setMonth(month);
         setDay(day);
@@ -43,11 +46,11 @@ public class Date {
     public void setDay(int day) {
         int month = getMonth();
         if (day <= 0) {
-            throw new IllegalArgumentException("Day entered cannot be less than or equal to 0.");
+            throw new IllegalArgumentException("Day entered cannot be less than or equal to 0. Input: " + day);
         }
         if (month == 2) { // february and leap year handling.
             if (day > 28 && !isLeapYear() || (isLeapYear() && day > 29)) {
-                throw new IllegalArgumentException("February cannot have a day of greater than 28.");
+                throw new IllegalArgumentException("February cannot have a day of greater than 28. Input: " + isLeapYear() + " " + day);
             }
         } else if ((month % 2 == 0 && month < 7) || (month % 2 == 1 && month > 8)) { // months with 30 days.
             if (day > 30) {

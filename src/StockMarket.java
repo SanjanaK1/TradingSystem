@@ -10,7 +10,7 @@ import java.util.Set;
 public class StockMarket {
 
     // mapping between Stock and quantities available
-    private static Map<Stock, Integer> stockListOnMarket;
+    private static Map<Stock, Integer> stockListOnMarket = new HashMap<>();
 
     public static boolean purchase(Stock s, int quantityBought) {
         boolean isSuccessfulPurchase = false;

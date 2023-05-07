@@ -16,7 +16,6 @@ public class Security
         if (customerInformation.get(username) != null) {
             if (customerInformation.get(username) .equals(password)) {
                 System.out.println("Successfully logged in, opening your client window");
-
                 return true;
             } else {
                 System.out.println("Wrong password");
@@ -37,7 +36,7 @@ public class Security
         }
         else{
             FileHandler.writeToUsers(username, password);
-            c = new Customer(username, false,2500.0, basePortfolio);
+            c = new Customer(username, false,2500.0, basePortfolio, false);
             setCustomer();
             return true;
         }
