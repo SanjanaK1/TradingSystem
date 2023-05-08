@@ -90,7 +90,8 @@ public class LoginWindow extends JFrame {
         String username = userTextField.getText().trim();
         String password = passwordTextField.getText();
         try {
-            if (Security.createAccount(username, password) == true) {
+            if (username.length() == 0 || password.length() == 0) return;
+            if (Security.createAccount(username, password)) {
                 GUI.tradeWindow();
                 dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
             }
