@@ -8,15 +8,13 @@ public class Stock extends Observable implements Tradeable {
     private Date datePurchased; // todo implement usage
     private Date dateSold; // todo implement usage
     private String name;
-    private int quantity;
 
-    public Stock(String name, double currentPrice, double boughtPrice, Date datePurchased, Date dateSold, int quantity) {
+    public Stock(String name, double currentPrice, double boughtPrice, Date datePurchased, Date dateSold){
         setName(name);
         setCurrentPrice(currentPrice);
         setBoughtPrice(boughtPrice);
         setDatePurchased(datePurchased);
         setDateSold(dateSold);
-        setQuantity(quantity);
 
     }
 
@@ -70,13 +68,5 @@ public class Stock extends Observable implements Tradeable {
     public String toString()
     {
         return name;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 }

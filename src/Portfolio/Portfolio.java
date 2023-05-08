@@ -1,3 +1,5 @@
+import java.util.Map;
+
 public interface Portfolio {
 
     String makePortfolio();
@@ -19,4 +21,6 @@ public interface Portfolio {
     String[] getStockNames();
 
     String displayStockList();
+
+    void setStockList(Map<Stock, Integer> stockList);
 }

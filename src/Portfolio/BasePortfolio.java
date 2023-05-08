@@ -33,13 +33,13 @@ public class BasePortfolio implements Portfolio, Observer {
     }
 
     public void removeStock(Stock s, int quantityRemoved) {
-        if (this.stockList.get(s) != null && quantityRemoved > 0) {
-            int currentQuantity = this.stockList.get(s);
+        if (this.stockList.get(getStockByName(s.getName())) != null && quantityRemoved > 0) {
+            int currentQuantity = this.stockList.get(getStockByName(s.getName()));
             if (currentQuantity > quantityRemoved)
-                this.stockList.replace(s, currentQuantity - quantityRemoved);
-            else if (this.stockList.get(s) != null && currentQuantity == quantityRemoved){
+                this.stockList.replace(getStockByName(s.getName()), currentQuantity - quantityRemoved);
+            else if (this.stockList.get(getStockByName(s.getName())) != null && currentQuantity == quantityRemoved){
                 s.deleteObserver(this);
-                this.stockList.remove(s);
+                this.stockList.remove(getStockByName(s.getName()));
 
             }
         }
@@ -50,15 +50,15 @@ public class BasePortfolio implements Portfolio, Observer {
 
     public int getStockQuantity(Stock s) {
         int quantity = -1; // in case stock is not found in portfolio, not owned.
-        if (this.stockList.get(s) != null) {
-            quantity = this.stockList.get(s);
+        if (this.stockList.get(getStockByName(s.getName())) != null) {
+            quantity = this.stockList.get(getStockByName(s.getName()));
         }
         return quantity;
     }
 
     public void setStockQuantity(Stock s, int quantity) {
-        if (this.stockList.get(s) == null) {
-            this.stockList.replace(s, quantity);
+        if (this.stockList.get(getStockByName(s.getName())) == null) {
+            this.stockList.replace(getStockByName(s.getName()), quantity);
         }
     }
 
@@ -98,14 +98,14 @@ public class BasePortfolio implements Portfolio, Observer {
     }
 
     private void updateStockPrice(Stock changedStock) {
-        Stock s = getStock(changedStock.getName()); // gets Stock in BasePortfolio (may be null).
+        Stock s = getStockByName(changedStock.getName()); // gets Stock in BasePortfolio (may be null).
         if (s != null) {
             s.setCurrentPrice(changedStock.getCurrentPrice());
-            this.stockList.put(s, this.stockList.get(s));
+            this.stockList.put(getStockByName(s.getName()), this.stockList.get(getStockByName(s.getName())));
         }
     }
 
-    public Stock getStock(String stockName) {
+    public Stock getStockByName(String stockName) {
         Stock s = getStockInList(stockName);
         return s;
     }
@@ -142,7 +142,7 @@ public class BasePortfolio implements Portfolio, Observer {
         Stock[] stockArray = getStockArray();
         int[] stockAmountsOwned = new int[stockArray.length];
         for (int i = 0; i < stockAmountsOwned.length; i++) {
-            stockAmountsOwned[i] = stockArray[i].getQuantity();
+            stockAmountsOwned[i] = stockList.get(stockArray[i]);
         }
         return stockAmountsOwned;
     }

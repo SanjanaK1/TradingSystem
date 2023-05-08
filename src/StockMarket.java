@@ -15,10 +15,9 @@ public class StockMarket {
     public static boolean purchase(Stock s, int quantityBought) {
         boolean isSuccessfulPurchase = false;
         boolean isStockInMarket = isStockInMarket(s);
-        if (isStockInMarket && stockListOnMarket.get(s) >= quantityBought) {
+        if (isStockInMarket && stockListOnMarket.get(getStockByName(s.getName())) >= quantityBought) {
             int currentStockQuantity =  stockListOnMarket.get(s);
-            stockListOnMarket.replace(s, currentStockQuantity - quantityBought);
-            s.setQuantity(currentStockQuantity - quantityBought);
+            stockListOnMarket.replace(getStockByName(s.getName()), currentStockQuantity - quantityBought);
             isSuccessfulPurchase = true;
         }
         return isSuccessfulPurchase;
@@ -28,9 +27,8 @@ public class StockMarket {
         boolean isSuccessfulSell = false;
         boolean isStockInMarket = isStockInMarket(s);
         if (isStockInMarket) {
-            int currentStockQuantity =  stockListOnMarket.get(s);
-            stockListOnMarket.replace(s, currentStockQuantity + quantitySold);
-            s.setQuantity(currentStockQuantity + quantitySold);
+            int currentStockQuantity =  stockListOnMarket.get(getStockByName(s.getName()));
+            stockListOnMarket.replace(getStockByName(s.getName()), currentStockQuantity + quantitySold);
             isSuccessfulSell = true;
         }
         else {
@@ -43,7 +41,7 @@ public class StockMarket {
 
     public static int getQuantityAvailable(Stock s) {
         if (isStockInMarket(s)) {
-            return stockListOnMarket.get(s);
+            return stockListOnMarket.get(getStockByName(s.getName()));
         } else {
             return -1;
         }
@@ -56,7 +54,7 @@ public class StockMarket {
     public static boolean isStockInMarket(Stock s) {
         boolean isStockInMarket = false;
         if (stockListOnMarket != null) {
-            isStockInMarket = (stockListOnMarket.get(s) != null);
+            isStockInMarket = stockListOnMarket.containsKey(getStockByName(s.getName()));
         }
         return isStockInMarket;
     }
@@ -107,7 +105,6 @@ public class StockMarket {
 
     public static void addStock(Stock stock, int amountOfStock) {
         assert stock != null && amountOfStock >= 0;
-        stock.setQuantity(amountOfStock);
         stockListOnMarket.put(stock, amountOfStock);
     }
 

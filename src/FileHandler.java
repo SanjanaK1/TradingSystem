@@ -1,5 +1,4 @@
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class FileHandler {
@@ -47,6 +46,7 @@ public class FileHandler {
     public static void processStockList(Portfolio p, String[] stockList) {
         assert stockList != null;
         if (stockList.length > 0) {
+            p.setStockList(new HashMap<>());
             for (int i = 0; i < stockList.length; i++) {
                 String[] elementOfStock = stockList[i].split(",");
                 String name = elementOfStock[0].substring(1); // skips over the open parenthesis
@@ -55,14 +55,17 @@ public class FileHandler {
                 double boughtPrice = Double.parseDouble(elementOfStock[3].substring(0, elementOfStock[3].indexOf(")"))); // skips over close parenthesis
                 Stock s;
                 if (StockMarket.getStockByName(name) == null) {
-                    s = new Stock(name, 0, boughtPrice, date, null, 0);
+                    s = new Stock(name, 0, boughtPrice, date, null);
+                    StockMarket.addStock(s, 0);
                 }
                 else {
                     s = new Stock(name, StockMarket.getStockByName(name).getCurrentPrice(), boughtPrice, date,
-                            null, StockMarket.getStockByName(name).getQuantity());
+                            null);
                 }
                 p.addStock(s, quantity);
             }
+        } else {
+            p.setStockList(new HashMap<>());
         }
     }
 
@@ -98,7 +101,7 @@ public class FileHandler {
                 String name = tokens[0];
                 double price = Double.parseDouble(tokens[1]);
                 int amountOfStock = Integer.parseInt(tokens[2]);
-                Stock stock = new Stock(name,price, -1, null, null, amountOfStock);
+                Stock stock = new Stock(name,price, -1, null, null);
                 StockMarket.addStock(stock, amountOfStock);
             }
         } catch (IOException e) {
