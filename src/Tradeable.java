@@ -5,8 +5,4 @@ public interface Tradeable {
 
     void setCurrentPrice(double currentPrice);
 
-    int getQuantity();
-
-    void setQuantity(int setQuantity);
-
 }
