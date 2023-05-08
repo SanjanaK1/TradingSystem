@@ -58,16 +58,6 @@ public class BasePortfolio implements Portfolio, Observer {
         }
     }
 
-    public double getRealizedAmount(Stock s) {
-        //TODO Move change to elsewhere as stock should no longer be in portfolio.
-        try {
-            return s.getNetChange();
-        } catch (Exception e) {
-            System.out.println("Stock is null");
-            return -1;
-        }
-    }
-
     public double getUnrealizedAmount(Stock s) {
         //TODO
         try {
@@ -88,7 +78,7 @@ public class BasePortfolio implements Portfolio, Observer {
         Stock[] stockArray = getStockArray();
         for (int i = 0; i < stockArray.length; i++) {
             // value accounts for quantity times stock price net change.
-            value += getUnrealizedAmount(stockArray[i]) * this.stockList.get(stockArray[i]);
+            value += stockArray[i].getNetChange() * this.stockList.get(stockArray[i]);
         }
         return value;
     }
@@ -168,7 +158,7 @@ public class BasePortfolio implements Portfolio, Observer {
         Stock[] stockArray = getStockArray();
         for (int i = 0; i < stockArray.length; i++) {
             String name = stockArray[i].getName();
-            int quantity = stockArray[i].getQuantity();
+            int quantity = stockList.get(stockArray[i]);
             String datePurchased = stockArray[i].getDatePurchased().toString();
             double boughtPrice = stockArray[i].getBoughtPrice();
             display += "(" + name + "," +  quantity + "," + datePurchased + "," + boughtPrice + ")";
