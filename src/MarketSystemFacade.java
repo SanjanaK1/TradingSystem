@@ -55,4 +55,20 @@ public class MarketSystemFacade {
         }
         return null;
     }
+
+    public static boolean depositMoney(Customer c, double money) {
+        if (money >= 0) {
+            c.setMoney(c.getMoney() + money);
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean withdrawMoney(Customer c, double money) {
+        if (c.getMoney() >= money) {
+            c.setMoney(c.getMoney() - money);
+            return true;
+        }
+        return false;
+    }
 }

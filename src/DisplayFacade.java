@@ -85,11 +85,11 @@ public class DisplayFacade {
     }
 
     public static boolean deposit(Double d){
-        return false;
+        return MarketSystemFacade.depositMoney(c, d);
     }
 
     public static boolean withdraw(Double d){
-        return false;
+        return MarketSystemFacade.withdrawMoney(c, d);
     }
 
     public static Customer[] getAllCustomers(){
