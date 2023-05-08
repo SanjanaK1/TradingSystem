@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.List;
 
 public class DisplayAdaptor {
@@ -116,4 +117,14 @@ public class DisplayAdaptor {
     }
 
     public static boolean hasCustomer(){return c != null;}
+
+    public static boolean notifyDerivative(){
+        if (c == null) return false;
+        if (c.isApproved() && !c.isNotified()) {
+            c.setNotified(true);
+            JOptionPane.showMessageDialog(null, "Your account is approved for derivative trading!");
+            return true;
+        }
+        return c.isApproved();
+    }
 }

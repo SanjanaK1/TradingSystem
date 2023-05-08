@@ -5,7 +5,8 @@ public class Customer extends Person {
     private boolean approved = false ; //0 = not approved
     private double money;
     private Portfolio portfolio = new BasePortfolio(null);
-    private boolean isEligibleForDerivative = false;
+    private boolean isNotified = false;
+    private boolean isEligibleForDerivative;
 
     public Customer(String name, boolean isApproved, double money, Portfolio p, boolean isEligibleForDerivative) {
         super(name);
@@ -18,6 +19,10 @@ public class Customer extends Person {
     public boolean isApproved() {
         return approved;
     }
+
+    public boolean isNotified() {return isNotified;}
+
+    public void setNotified(boolean notified) {this.isNotified = notified;}
 
     public void setApproved(boolean approved) {
         this.approved = approved;
