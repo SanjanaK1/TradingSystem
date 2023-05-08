@@ -78,7 +78,18 @@ public class Date {
     }
 
     public void setLeapYear() {
-
         isLeapYear = false; // todo: fix is leap year test.
+    }
+
+    public String toString() {
+        String monthPadding = "";
+        String dayPadding = "";
+        if (month < 10) {
+            monthPadding = "0";
+        }
+        if (day < 10) {
+            dayPadding = "0";
+        }
+        return year + "-" + monthPadding + month + "-" + dayPadding + day;
     }
 }
