@@ -31,7 +31,7 @@
           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="NAME HERE"/>
+          <text value="admin"/>
         </properties>
       </component>
       <component id="53f8" class="javax.swing.JLabel" binding="sellStocksLabel">

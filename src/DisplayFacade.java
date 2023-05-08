@@ -132,4 +132,6 @@ public class DisplayFacade {
     public static String[] getStockFileHeader() {
         return new String[]{"Stock Name", "Stock Price", "Quantity"};
     }
+
+    public static boolean hasCustomer(){return c != null;}
 }

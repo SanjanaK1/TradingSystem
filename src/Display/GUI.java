@@ -5,9 +5,13 @@ public class GUI {
     private static JFrame buyWindow, tradeWindow, sellWindow, bankWindow;
 
     public static void tradeWindow() {
+        tradeWindow(true);
+    }
+
+    public static void tradeWindow(boolean primaryWindow) {
         JFrame frame = new JFrame("TradeWindow");
         frame.setContentPane(new TradeWindow().panel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        if (primaryWindow) frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

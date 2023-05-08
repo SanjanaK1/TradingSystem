@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ public class Security
     private static Customer c;
     private static BasePortfolio basePortfolio = new BasePortfolio( new HashMap<Stock, Integer>());
 
+    private static final String MANAGERNAME = "admin", MANAGERPASSWORD = "admin";
 
     public static boolean login(String username, String password) throws IOException {
         Map<String, String> customerInformation = FileHandler.loadUsers();
@@ -33,7 +35,12 @@ public class Security
             }
 
         }
-        System.out.println("This user does not exist, please create an account first");
+        if (username.equals(MANAGERNAME) && password.equals(MANAGERPASSWORD)) {
+            //open manager window
+            GUI.managerWindow();
+            return true;
+        }
+        JOptionPane.showMessageDialog(null,"This user does not exist, please create an account first");
         return false;
     }
 
