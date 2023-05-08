@@ -157,6 +157,9 @@ public class BasePortfolio implements Portfolio, Observer {
         String display = "[";
         Stock[] stockArray = getStockArray();
         for (int i = 0; i < stockArray.length; i++) {
+            if (i != 0 && i !=  stockArray.length -1) {
+                display += ";";
+            }
             String name = stockArray[i].getName();
             int quantity = stockList.get(stockArray[i]);
             String datePurchased = stockArray[i].getDatePurchased().toString();
