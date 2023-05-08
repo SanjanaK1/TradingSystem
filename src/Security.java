@@ -46,7 +46,7 @@ public class Security
         else{
             FileHandler.writeToUsers(username, password);
             c = new Customer(username, false,2500.0, basePortfolio, false);
-            FileHandler.writeToCustomers(username, c.getPortfolio(), c.getMoney(), c.getIsEligableForDerivative());
+            FileHandler.writeToCustomers(username, c.getPortfolio(), c.getMoney(), c.isEligibleForDerivative());
             setCustomer();
             return true;
         }

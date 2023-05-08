@@ -47,7 +47,6 @@ public class FileHandler {
     public static void processStockList(Portfolio p, String[] stockList) {
         assert stockList != null;
         if (stockList.length > 0) {
-            System.out.println(stockList.length);
             for (int i = 0; i < stockList.length; i++) {
                 String[] elementOfStock = stockList[i].split(",");
                 String name = elementOfStock[0].substring(1); // skips over the open parenthesis
@@ -111,8 +110,18 @@ public class FileHandler {
     public static void writeToCustomers(String username, Portfolio portfolio, double money, boolean derivativeAccount) throws IOException {
         FileWriter fileWriter = new FileWriter("src/TXT Files/customers.txt", true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        bufferedWriter.write("\n"+username+"\t"+portfolio+"\t"+portfolio.displayStockList()+"\t"+money+"\t"+derivativeAccount+"\t");
+        String isEligibleForDerivative = "N";
+        if (derivativeAccount) {
+            isEligibleForDerivative = "Y";
+        }
+        bufferedWriter.write("\n"+username+"\t"+portfolio.displayStockList()+"\t"+money+"\t"+isEligibleForDerivative+"\t");
         bufferedWriter.close();
     }
 
+    public static void updateCustomer(Customer c) {
+
+    }
+
+    public static void updateStockMarketQuantity(Stock s, int quantity) {
+    }
 }

@@ -28,11 +28,6 @@ public class Customer extends Person {
         return money;
     }
 
-    public boolean getIsEligableForDerivative()
-    {
-        return isEligibleForDerivative;
-    }
-
     public void setMoney(double money) {
         this.money = money;
     }
@@ -108,7 +103,7 @@ public class Customer extends Person {
     }
 
     public boolean isEligibleForDerivative() {
-        return isEligibleForDerivative;
+        return PortfolioManager.getPortfolioManagerInstance().approveCustomer(this);
     }
 
     public void setEligibleForDerivative(boolean eligibleForDerivative) {
