@@ -80,7 +80,9 @@ public class BasePortfolio implements Portfolio, Observer {
         Stock[] stockArray = getStockArray();
         for (int i = 0; i < stockArray.length; i++) {
             // value accounts for quantity times stock price net change.
-            value += stockArray[i].getNetChange() * this.stockList.get(stockArray[i]);
+            if (stockArray[i].getNetChange() > 0) {
+                value += stockArray[i].getNetChange() * this.stockList.get(stockArray[i]);
+            }
         }
         return value;
     }

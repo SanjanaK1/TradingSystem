@@ -101,7 +101,7 @@ public class Customer extends Person {
             stockListInformation[i][2] = String.valueOf(getPortfolio().getStockQuantity(stockArray[i])); // Quantity Owned
             stockListInformation[i][4] = String.valueOf(stockArray[i].getBoughtPrice()); // Price at which stock was bought
             stockListInformation[i][5] = String.valueOf(Double.parseDouble(stockListInformation[i][1]) - Double.parseDouble(stockListInformation[i][4])); // Delta (Current Price - Bought Price)
-            stockListInformation[i][3] = String.valueOf(Integer.parseInt(stockListInformation[i][2]) * stockArray[i].getCurrentPrice()); // Total Price (Delta * Quantity)
+            stockListInformation[i][3] = String.valueOf(Integer.parseInt(stockListInformation[i][2]) * stockArray[i].getCurrentPrice()); // Total Price (Current Price * Quantity)
 
         }
         return stockListInformation;
