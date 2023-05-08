@@ -183,7 +183,7 @@ public class FileHandler {
             for (String[] stock : stockList) {
                 for (String word : stock) {
                     writer.write(word);
-                    writer.write("\t");
+                    writer.write("     ");
                 }
                 writer.write("\n");
             }
