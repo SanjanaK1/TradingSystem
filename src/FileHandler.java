@@ -54,7 +54,7 @@ public class FileHandler {
                 int quantity = Integer.parseInt(elementOfStock[1]);
                 Date date = Date.parseDate(elementOfStock[2]);
                 double boughtPrice = Double.parseDouble(elementOfStock[3].substring(0, elementOfStock[3].indexOf(")"))); // skips over close parenthesis
-                Stock s = new Stock(name, StockMarket.getStockByName(name).getCurrentPrice(), boughtPrice, date, null);
+                Stock s = new Stock(name, StockMarket.getStockByName(name).getCurrentPrice(), boughtPrice, date, null, StockMarket.getStockByName(name).getQuantity());
                 p.addStock(s, quantity);
             }
         }
@@ -91,8 +91,8 @@ public class FileHandler {
                 String[] tokens = line.split("\\s+");
                 String name = tokens[0];
                 double price = Double.parseDouble(tokens[1]);
-                Stock stock = new Stock(name,price, -1, null, null);
                 int amountOfStock = Integer.parseInt(tokens[2]);
+                Stock stock = new Stock(name,price, -1, null, null, amountOfStock);
                 StockMarket.addStock(stock, amountOfStock);
             }
         } catch (IOException e) {
@@ -104,7 +104,7 @@ public class FileHandler {
     public static void writeToUsers(String username, String password) throws IOException {
         FileWriter fileWriter = new FileWriter("src/TXT Files/users.txt", true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        bufferedWriter.write(username+"\t"+password+"\n");
+        bufferedWriter.write("\n"+username+"\t"+password+"\n");
         bufferedWriter.close();
     }
 

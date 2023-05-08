@@ -51,13 +51,12 @@ public class Customer extends Person {
 
     public boolean buyStock(Stock s, int quantityBought) {
         boolean bought = false;
-
         if (s != null && StockMarket.isStockInMarket(s) && this.money >= quantityBought * s.getCurrentPrice()) {
             double stockCost = quantityBought * s.getCurrentPrice();
+            s.setBoughtPrice(s.getCurrentPrice());
             portfolio.addStock(s, quantityBought);
             setMoney(this.money - stockCost);
             bought = true;
-
         }
         return bought;
     }
@@ -98,7 +97,7 @@ public class Customer extends Person {
                 new String[numOfStocks][DisplayFacade.numAttributesToDisplay];
         for (int i = 0; i < numOfStocks; i++) {
             stockListInformation[i][0] = stockArray[i].getName(); // Name of Stock
-            stockListInformation[i][1] = String.valueOf(stockArray[i].getCurrentPrice()); // Current Price at Market
+            stockListInformation[i][1] = String.valueOf(stockArray[i].getCurrentPrice()); // Current Price at Market);
             stockListInformation[i][2] = String.valueOf(getPortfolio().getStockQuantity(stockArray[i])); // Quantity Owned
             stockListInformation[i][4] = String.valueOf(stockArray[i].getBoughtPrice()); // Price at which stock was bought
             stockListInformation[i][5] = String.valueOf(Double.parseDouble(stockListInformation[i][1]) - Double.parseDouble(stockListInformation[i][4])); // Delta (Current Price - Bought Price)

@@ -10,12 +10,13 @@ public class Stock extends Observable implements Tradeable {
     private String name;
     private int quantity;
 
-    public Stock(String name, double currentPrice, double boughtPrice, Date datePurchased, Date dateSold) {
+    public Stock(String name, double currentPrice, double boughtPrice, Date datePurchased, Date dateSold, int quantity) {
         setName(name);
         setCurrentPrice(currentPrice);
         setBoughtPrice(boughtPrice);
         setDatePurchased(datePurchased);
         setDateSold(dateSold);
+        setQuantity(quantity);
 
     }
 

@@ -29,6 +29,7 @@ public class MarketSystemFacade {
                 if (isSuccessfulPurchase) {
                     // TODO: consider logging this or adding sign of how much was purchased (compared to intended).
                     isStockBought = c.buyStock(s, greatestQuantityAvailableForPurchase);
+                    System.out.println("isSuccessfulPurchase " + isSuccessfulPurchase + "\nisStockBought: " + isStockBought);
                 }
             }
         }

@@ -17,4 +17,6 @@ public interface Portfolio {
     int[] getStockAmountsOwned();
 
     String[] getStockNames();
+
+    String displayStockList();
 }

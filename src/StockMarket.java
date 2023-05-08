@@ -102,6 +102,7 @@ public class StockMarket {
 
     public static void addStock(Stock stock, int amountOfStock) {
         assert stock != null && amountOfStock >= 0;
+        stock.setQuantity(amountOfStock);
         stockListOnMarket.put(stock, amountOfStock);
     }
 

@@ -15,7 +15,7 @@ public class Security
         Map<String, String> customerInformation = FileHandler.loadUsers();
         assert customerInformation != null;
         if (customerInformation.get(username) != null) {
-            if (customerInformation.get(username) .equals(password)) {
+            if (customerInformation.get(username).equals(password)) {
                 System.out.println("Successfully logged in, opening your client window");
                 List<Customer> listOfCustomers = FileHandler.loadCustomers();
                 assert listOfCustomers != null;
@@ -39,7 +39,7 @@ public class Security
 
     public static boolean createAccount(String username, String password) throws IOException {
         //Read in usernames and passwords from text file
-        if (login(username, password)) {
+        if (login(username, password) || doesUserExist(username)) {
             System.out.println("user exists already");
             return false;
         }
@@ -50,6 +50,15 @@ public class Security
             setCustomer();
             return true;
         }
+    }
+
+    public static boolean doesUserExist(String name) throws IOException {
+        Map<String, String> customerInformation = FileHandler.loadUsers();
+        assert customerInformation != null;
+        if (customerInformation.get(name) != null) {
+            return true;
+        }
+        return false;
     }
 
     private static void setCustomer() {

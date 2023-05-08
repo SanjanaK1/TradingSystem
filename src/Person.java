@@ -1,3 +1,6 @@
+/*
+    Person Class: Class that maintains common attributes between PortfolioManager and
+ */
 public class Person {
 
     private String name;

@@ -23,8 +23,8 @@ public class BasePortfolio implements Portfolio, Observer {
         if (quantityAdded > 0) {
             if (!isStockInList(s.getName())) {
                 s.addObserver(this);
+                this.stockList.put(s, quantityAdded);
             }
-            this.stockList.putIfAbsent(s, quantityAdded);
         }
     }
 
@@ -46,7 +46,7 @@ public class BasePortfolio implements Portfolio, Observer {
 
     public int getStockQuantity(Stock s) {
         int quantity = -1; // in case stock is not found in portfolio, not owned.
-        if (this.stockList.get(s) == null) {
+        if (this.stockList.get(s) != null) {
             quantity = this.stockList.get(s);
         }
         return quantity;
@@ -160,5 +160,20 @@ public class BasePortfolio implements Portfolio, Observer {
             stockNames[i] = stockArray[i].getName();
         }
         return stockNames;
+    }
+
+    @Override
+    public String displayStockList() {
+        String display = "[";
+        Stock[] stockArray = getStockArray();
+        for (int i = 0; i < stockArray.length; i++) {
+            String name = stockArray[i].getName();
+            int quantity = stockArray[i].getQuantity();
+            String datePurchased = stockArray[i].getDatePurchased().toString();
+            double boughtPrice = stockArray[i].getBoughtPrice();
+            display += "(" + name + "," +  quantity + "," + datePurchased + "," + boughtPrice + ")";
+        }
+        display += "]";
+        return display; //todo
     }
 }
