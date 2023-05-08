@@ -140,4 +140,21 @@ public class FileHandler {
         }
         return stockList;
     }
+
+    public static boolean setStockFile(List<String[]> stockList) {
+        String fileName = "src/TXT Files/stocks.txt";
+        try (FileWriter writer = new FileWriter(fileName)) {
+            writer.write("Stocks  Price   Count\n");
+            for (String[] stock : stockList) {
+                for (String word : stock) {
+                    writer.write(word);
+                    writer.write("\t");
+                }
+                writer.write("\n");
+            }
+        } catch (IOException e) {
+            return false;
+        }
+        return true;
+    }
 }

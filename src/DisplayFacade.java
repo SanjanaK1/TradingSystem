@@ -102,8 +102,8 @@ public class DisplayFacade {
     public static List<String[]> getStockFile(){
         return FileHandler.getStockFile();
     }
-    public static void setStockFile(){
-        //TODO from file
+    public static boolean setStockFile(List<String[]> values){
+        return FileHandler.setStockFile(values);
     }
 
     public static String getDetailedInfo() {
