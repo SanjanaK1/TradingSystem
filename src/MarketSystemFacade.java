@@ -17,7 +17,7 @@ public class MarketSystemFacade {
         if (isInMarket && isQuantityAvailable && hasEnoughMoney) {
             boolean isSuccessfulPurchase = StockMarket.purchase(s, quantity);
             if (isSuccessfulPurchase) {
-                c.buyStock(s, quantity);
+                isStockBought = c.buyStock(s, quantity);
             }
         }
         // case where stock quantity is less than desired for purchase
