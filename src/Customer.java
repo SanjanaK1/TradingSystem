@@ -109,4 +109,9 @@ public class Customer extends Person {
     public void setEligibleForDerivative(boolean eligibleForDerivative) {
         isEligibleForDerivative = eligibleForDerivative;
     }
+
+    @Override
+    public String toString() {
+        return "Customer: " + getName();
+    }
 }
