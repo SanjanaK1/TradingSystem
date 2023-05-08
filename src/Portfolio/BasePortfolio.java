@@ -21,10 +21,12 @@ public class BasePortfolio implements Portfolio, Observer {
 
     public void addStock(Stock s, int quantityAdded) {
         if (quantityAdded > 0) {
-            if (this.stockList.containsKey(s)) {
-                s.addObserver(this);
-                this.stockList.put(s, this.stockList.get(s) + quantityAdded);
+            if (isStockInList(s.getName())) {
+                Stock inList = getStockInList(s.getName());
+                this.stockList.put(inList, this.stockList.get(inList) + quantityAdded);
             } else {
+                // add observing when stock is not in stockList
+                s.addObserver(this);
                 this.stockList.put(s, quantityAdded);
             }
         }
@@ -35,7 +37,7 @@ public class BasePortfolio implements Portfolio, Observer {
             int currentQuantity = this.stockList.get(s);
             if (currentQuantity > quantityRemoved)
                 this.stockList.replace(s, currentQuantity - quantityRemoved);
-            else if (currentQuantity == quantityRemoved){
+            else if (this.stockList.get(s) != null && currentQuantity == quantityRemoved){
                 s.deleteObserver(this);
                 this.stockList.remove(s);
 
