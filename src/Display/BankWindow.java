@@ -9,7 +9,7 @@ public class BankWindow {
     JPanel panel;
     private JLabel amountLabel;
     private JButton cancelButton;
-    private JFormattedTextField amountFormattedTextField;
+    private JTextField amountField;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("BankWindow");
@@ -43,12 +43,14 @@ public class BankWindow {
 
         double d = 0;
         try {
-            d = Double.parseDouble(amountFormattedTextField.getText());
+            d = Double.parseDouble(amountField.getText());
         }
         catch (Exception e) {
             GUI.invalidPopup("Not a valid amount");
             return;
         }
+
+        if (d<0) GUI.invalidPopup("Not a valid amount");
 
         if (DisplayAdaptor.withdraw(d)) {
             //success
@@ -61,12 +63,14 @@ public class BankWindow {
         GUI.hideBankWindow();
         double d = 0;
         try {
-            d = Double.parseDouble(amountFormattedTextField.getText());
+            d = Double.parseDouble(amountField.getText());
         }
         catch (Exception e) {
             GUI.invalidPopup("Not a valid amount");
             return;
         }
+
+        if (d<0) GUI.invalidPopup("Not a valid amount");
 
         if (DisplayAdaptor.deposit(d)) {
             //success
@@ -77,9 +81,5 @@ public class BankWindow {
 
     private void update() {
         amountLabel.setText(DisplayAdaptor.getLiquid());
-    }
-
-    private void createUIComponents() {
-        amountFormattedTextField = new JFormattedTextField(new NumberFormatter());
     }
 }
