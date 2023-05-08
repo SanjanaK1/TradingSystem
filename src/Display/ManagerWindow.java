@@ -53,7 +53,8 @@ public class ManagerWindow {
 
     private void openCustomer() {
         Customer c = (Customer) portfolioComboBox.getSelectedItem();
-        //TODO open customer window
+        DisplayFacade.setCustomer(c);
+        GUI.tradeWindow(false);
     }
 
     private void save() {

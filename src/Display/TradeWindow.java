@@ -92,14 +92,10 @@ public class TradeWindow {
     }
 
     public void update() {
-        //accountNameLabel.setText(DisplayFacade.getUserName());
+        accountNameLabel.setText(DisplayFacade.getUserName());
         totalAssetLabel.setText(DisplayFacade.getTotal());
         liquidAssetLabel.setText(DisplayFacade.getLiquid());
-        //stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
         stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
-
-        //((DisplayTableModel) stockTable.getModel()).test();
-        //GUI.invalidPopup();
     }
 
 }
