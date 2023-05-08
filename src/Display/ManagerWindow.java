@@ -42,6 +42,7 @@ public class ManagerWindow {
         });
 
         portfolioComboBox.setModel(new DefaultComboBoxModel(DisplayFacade.getAllCustomers()));
+        stockTable.putClientProperty("terminateEditOnFocusLost", true);
 
         update();
     }
