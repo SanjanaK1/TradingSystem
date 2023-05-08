@@ -92,6 +92,7 @@ public class TradeWindow {
         totalAssetLabel.setText(DisplayAdaptor.getTotal());
         liquidAssetLabel.setText(DisplayAdaptor.getLiquid());
         stockTable.setModel(new DisplayTableModel(DisplayAdaptor.getTableData(), DisplayAdaptor.getTableHeader()));
+        DisplayAdaptor.notifyDerivative();
     }
 
 }

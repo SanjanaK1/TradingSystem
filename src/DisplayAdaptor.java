@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.List;
 
 public class DisplayAdaptor {
@@ -73,7 +74,7 @@ public class DisplayAdaptor {
     }
 
     public static Stock[] getOwnedStocks() {
-        return c.getPortfolio().getStockArray(); //TODO
+        return c.getPortfolio().getStockArray();
     }
 
     public static Stock[] getAllStocks() {
@@ -106,8 +107,9 @@ public class DisplayAdaptor {
         if (DisplayAdaptor.c == null) return "ACCOUNT NOT FOUND";
         return "Account Value: " + getTotal()
                 + "\nLiquid Assets: " + getLiquid()
-                + "\nUnrealized gains: " + 0 //TODO Delta Here
-                + "\n...";
+                + "\nUnrealized gains: " + 0
+                + "\nTotal change: " + 0
+                + "\nDerivative Available?: " + "Y";//TODO
     }
 
     public static String[] getStockFileHeader() {
@@ -115,4 +117,14 @@ public class DisplayAdaptor {
     }
 
     public static boolean hasCustomer(){return c != null;}
+
+    public static boolean notifyDerivative(){
+        if (c == null) return false;
+        if (c.isApproved() && !c.isNotified()) {
+            c.setNotified(true);
+            JOptionPane.showMessageDialog(null, "Your account is approved for derivative trading!");
+            return true;
+        }
+        return c.isApproved();
+    }
 }
