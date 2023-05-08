@@ -34,14 +34,16 @@ public class MarketSystemFacade {
             }
         }
         if (isStockBought) {
+            System.out.println("Quantity to buy " + quantity);
             System.out.println(c.getPortfolio().displayStockList());
             FileHandler.updateCustomer(c);
-            FileHandler.updateStockMarketQuantity(s, StockMarket.getStockByName(s.getName()).getQuantity() - quantity);
+            FileHandler.updateStockMarketQuantity(s, StockMarket.getQuantityAvailable(s));
         }
         return isStockBought;
     }
 
     public static boolean sellStock(Customer c, Stock s, int quantityToSell) {
+        System.out.println("Quantity to sell:" + quantityToSell);
         boolean isStockSold = false;
         boolean hasStockInPortfolio = c.isStockInPortfolio(s);
         boolean isValidSell = hasStockInPortfolio && c.getPortfolio().getStockQuantity(s) >= quantityToSell;
@@ -51,7 +53,7 @@ public class MarketSystemFacade {
                 isStockSold = c.sellStock(s, quantityToSell);
                 FileHandler.updateCustomer(c);
                 if (StockMarket.getStockByName(s.getName()) != null) {
-                    FileHandler.updateStockMarketQuantity(s, StockMarket.getStockByName(s.getName()).getQuantity() + quantityToSell);
+                    FileHandler.updateStockMarketQuantity(s, StockMarket.getQuantityAvailable(s));
                 }
 
             }

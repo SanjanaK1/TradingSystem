@@ -129,7 +129,6 @@ public class FileHandler {
         //todo
         String fileName = "src/TXT Files/customers.txt";
         String fileContents = "";
-        String lineToBeReplaced = "";
         String replacingLine = c.getName() + "\t" + c.getPortfolio().displayStockList() +
                 "\t" + c.getMoney() + "\t";
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
@@ -164,21 +163,24 @@ public class FileHandler {
     }
 
     public static void updateStockMarketQuantity(Stock s, int quantity) {
+        System.out.println("Quantity at FileHandler is " + quantity);
         //todo
         // read from stocks.txt to update stockMarket quantity.
         String fileName = "src/TXT Files/stocks.txt";
+        String fileContents = "";
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
-            br.readLine();
+            fileContents += br.readLine() + "\n";
             while ((line = br.readLine()) != null) {
                 String[] tokens = line.split("\\s+");
                 String name = tokens[0];
-                double price = Double.parseDouble(tokens[1]);
-                int amountOfStock = Integer.parseInt(tokens[2]);
                 if (s.getName().equals(name)) {
-                    fileName.replace(line, name + "\t" + s.getCurrentPrice()+ "\t" + quantity);
+                    fileContents +=  name + "\t" + s.getCurrentPrice()+ "\t" + quantity + "\n";
+                } else {
+                    fileContents += line + "\n";
                 }
             }
+            updateWholeFile(fileName, fileContents);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
