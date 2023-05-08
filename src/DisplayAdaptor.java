@@ -73,7 +73,7 @@ public class DisplayAdaptor {
     }
 
     public static Stock[] getOwnedStocks() {
-        return c.getPortfolio().getStockArray(); //TODO
+        return c.getPortfolio().getStockArray();
     }
 
     public static Stock[] getAllStocks() {
