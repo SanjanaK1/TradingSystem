@@ -106,8 +106,9 @@ public class DisplayAdaptor {
         if (DisplayAdaptor.c == null) return "ACCOUNT NOT FOUND";
         return "Account Value: " + getTotal()
                 + "\nLiquid Assets: " + getLiquid()
-                + "\nUnrealized gains: " + 0 //TODO Delta Here
-                + "\n...";
+                + "\nUnrealized gains: " + 0
+                + "\nTotal change: " + 0
+                + "\nDerivative Available?: " + "Y";//TODO
     }
 
     public static String[] getStockFileHeader() {
