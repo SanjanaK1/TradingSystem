@@ -103,7 +103,7 @@ public class FileHandler {
     public static void writeToUsers(String username, String password) throws IOException {
         FileWriter fileWriter = new FileWriter("src/TXT Files/users.txt", true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        bufferedWriter.write("\n"+username+"\t"+password+"\n");
+        bufferedWriter.write("\n"+username+"\t"+password);
         bufferedWriter.close();
     }
 
@@ -114,15 +114,50 @@ public class FileHandler {
         if (derivativeAccount) {
             isEligibleForDerivative = "Y";
         }
-        bufferedWriter.write("\n"+username+"\t"+portfolio.displayStockList()+"\t"+money+"\t"+isEligibleForDerivative+"\t");
+        bufferedWriter.write("\n"+username+"\t"+portfolio.displayStockList()+"\t"+money+"\t"+isEligibleForDerivative);
         bufferedWriter.close();
     }
 
     public static void updateCustomer(Customer c) {
-
+        //todo
+        String fileName = "src/TXT Files/customers.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            br.readLine();
+            while ((line = br.readLine()) != null) {
+                String[] tokens = line.split("\\s+");
+                String name = tokens[0];
+                if (c.getName().equals(name)) {
+                    String isEligibleForDerivative = "N";
+                    if (c.isEligibleForDerivative()){
+                        isEligibleForDerivative = "Y";
+                    }
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void updateStockMarketQuantity(Stock s, int quantity) {
+        //todo
+        // read from stocks.txt to update stockMarket quantity.
+        String fileName = "src/TXT Files/stocks.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            br.readLine();
+            while ((line = br.readLine()) != null) {
+                String[] tokens = line.split("\\s+");
+                String name = tokens[0];
+                double price = Double.parseDouble(tokens[1]);
+                int amountOfStock = Integer.parseInt(tokens[2]);
+                if (s.getName().equals(name)) {
+                    fileName.replace(line, name + "\t" + s.getCurrentPrice()+ "\t" + quantity);
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static List<String[]> getStockFile() {

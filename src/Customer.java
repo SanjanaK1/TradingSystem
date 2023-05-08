@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +50,9 @@ public class Customer extends Person {
         if (s != null && StockMarket.isStockInMarket(s) && this.money >= quantityBought * s.getCurrentPrice()) {
             double stockCost = quantityBought * s.getCurrentPrice();
             s.setBoughtPrice(s.getCurrentPrice());
+            LocalDate currentDate = java.time.LocalDate.now();
+            Date d = new Date(currentDate.getYear(), currentDate.getMonthValue(), currentDate.getDayOfMonth());
+            s.setDatePurchased(d);
             portfolio.addStock(s, quantityBought);
             setMoney(this.money - stockCost);
             bought = true;
@@ -62,6 +66,9 @@ public class Customer extends Person {
             portfolio.removeStock(s, quantitySold);
             double netChange = s.getNetChange() * quantitySold;
             setMoney(netChange);
+            LocalDate currentDate = java.time.LocalDate.now();
+            Date d = new Date(currentDate.getYear(), currentDate.getMonthValue(), currentDate.getDayOfMonth());
+            s.setDateSold(d);
             sold = true;
         }
         //calculate realized gains here
