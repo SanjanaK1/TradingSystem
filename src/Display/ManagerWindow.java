@@ -59,7 +59,8 @@ public class ManagerWindow {
 
     private void save() {
        if(DisplayFacade.setStockFile(((StockManagerTableModel)stockTable.getModel()).getCells())){
-           JOptionPane.showMessageDialog(panel.getParent(), "Stocks updated successfully");
+           JOptionPane.showMessageDialog(panel.getParent(), "Stocks updated successfully " +
+                   "(on restart)");
        }
        else {
            JOptionPane.showMessageDialog(panel.getParent(), "WARNING: Stocks unable to update");
