@@ -21,7 +21,8 @@ public class LoginWindow extends JFrame {
         userTextField.setMinimumSize(new java.awt.Dimension(100, 20));
         passwordTextField = new JPasswordField(25);
         passwordTextField.setMinimumSize(new java.awt.Dimension(100, 20));
-        loginButton = new JButton("Log In");//creating instance of JButton
+        loginButton = new JButton("");//creating instance of JButton
+        loginButton.setIcon(IconCreator.createImageIcon("rsc/loginFlaming.gif","Login"));
         createAccountButton = new JButton("Create Account");
         userLabel = new JLabel("Username:");
         pwLabel = new JLabel("Password:");
