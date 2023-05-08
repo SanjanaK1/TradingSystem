@@ -59,9 +59,17 @@ public class TradeWindow {
         bankButton.addActionListener(e -> {
             bank();
         });
-        refreshTableButton.addActionListener(ne -> {
+        refreshTableButton.addActionListener(e -> {
             update();
         });
+
+        Timer timer = new Timer(3000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                update();
+            }
+        });
+        timer.start();
     }
 
     private void info() {
