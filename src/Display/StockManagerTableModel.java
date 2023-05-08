@@ -22,8 +22,9 @@ public class StockManagerTableModel extends DefaultTableModel {
             String[] stock = new String[getColumnCount()];
             boolean valid = true;
             for (int col = 0; col < getColumnCount(); col++) {
+                if (getValueAt(row, col) == null) continue;
                 String value = getValueAt(row, col).toString();
-                if (value.length() == 1) {
+                if (value.length() == 0) {
                     valid = false;
                     break;
                 }
