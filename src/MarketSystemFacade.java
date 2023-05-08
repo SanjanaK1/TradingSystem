@@ -34,7 +34,6 @@ public class MarketSystemFacade {
             }
         }
         if (isStockBought) {
-            System.out.println("Quantity to buy " + quantity);
             System.out.println(c.getPortfolio().displayStockList());
             FileHandler.updateCustomer(c);
             FileHandler.updateStockMarketQuantity(s, StockMarket.getQuantityAvailable(s));
@@ -43,7 +42,6 @@ public class MarketSystemFacade {
     }
 
     public static boolean sellStock(Customer c, Stock s, int quantityToSell) {
-        System.out.println("Quantity to sell:" + quantityToSell);
         boolean isStockSold = false;
         boolean hasStockInPortfolio = c.isStockInPortfolio(s);
         boolean isValidSell = hasStockInPortfolio && c.getPortfolio().getStockQuantity(s) >= quantityToSell;
