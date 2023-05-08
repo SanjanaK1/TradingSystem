@@ -64,8 +64,8 @@ public class Customer extends Person {
         boolean sold = false;
         if (s != null && portfolio.getStockQuantity(s) > 0) {
             portfolio.removeStock(s, quantitySold);
-            double netChange = s.getNetChange() * quantitySold;
-            setMoney(netChange);
+            double netChange = s.getCurrentPrice() * quantitySold;
+            setMoney(this.money + netChange);
             LocalDate currentDate = java.time.LocalDate.now();
             Date d = new Date(currentDate.getYear(), currentDate.getMonthValue(), currentDate.getDayOfMonth());
             s.setDateSold(d);
