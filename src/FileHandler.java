@@ -126,7 +126,6 @@ public class FileHandler {
     }
 
     public static void updateCustomer(Customer c) {
-        //todo
         String fileName = "src/TXT Files/customers.txt";
         String fileContents = "";
         String replacingLine = c.getName() + "\t" + c.getPortfolio().displayStockList() +
@@ -163,8 +162,6 @@ public class FileHandler {
     }
 
     public static void updateStockMarketQuantity(Stock s, int quantity) {
-        System.out.println("Quantity at FileHandler is " + quantity);
-        //todo
         // read from stocks.txt to update stockMarket quantity.
         String fileName = "src/TXT Files/stocks.txt";
         String fileContents = "";
