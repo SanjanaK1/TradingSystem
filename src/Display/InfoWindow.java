@@ -5,7 +5,7 @@ public class InfoWindow extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JLabel textLabel;
+    private JTextArea textArea;
 
     public InfoWindow() {
         setContentPane(contentPane);
@@ -34,7 +34,7 @@ public class InfoWindow extends JDialog {
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
         //fill out details
-        textLabel.setText(DisplayFacade.getDetailedInfo());
+        textArea.setText(DisplayFacade.getDetailedInfo());
     }
 
     private void onCancel() {
