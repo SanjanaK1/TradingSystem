@@ -124,4 +124,20 @@ public class FileHandler {
 
     public static void updateStockMarketQuantity(Stock s, int quantity) {
     }
+
+    public static List<String[]> getStockFile() {
+        String fileName = "src/TXT Files/stocks.txt";
+        List<String[]> stockList = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            br.readLine();
+            while ((line = br.readLine()) != null) {
+                String[] tokens = line.split("\\s+");
+                stockList.add(tokens);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return stockList;
+    }
 }

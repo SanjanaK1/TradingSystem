@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -95,26 +96,11 @@ public class DisplayFacade {
     }
 
     public static Customer[] getAllCustomers(){
-        //TODO from file
-        return new Customer[]{};
+        return FileHandler.loadCustomers().toArray(new Customer[0]);
     }
 
     public static List<String[]> getStockFile(){
-        //TODO move into fileHandler class
-        String fileName = "src/TXT Files/stocks.txt";
-        List<String[]> stockList = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            br.readLine();
-            while ((line = br.readLine()) != null) {
-                String[] tokens = line.split("\\s+");
-                stockList.add(tokens);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        return stockList;
+        return FileHandler.getStockFile();
     }
     public static void setStockFile(){
         //TODO from file
