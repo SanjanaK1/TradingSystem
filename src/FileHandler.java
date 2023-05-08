@@ -1,4 +1,5 @@
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class FileHandler {
@@ -79,6 +80,7 @@ public class FileHandler {
         return null;
     }
 
+
     public static void loadStocksToStockMarket() {
         //read from stocks.txt
         String fileName = "src/TXT Files/stocks.txt";
@@ -105,4 +107,12 @@ public class FileHandler {
         bufferedWriter.write(username+"\t"+password+"\n");
         bufferedWriter.close();
     }
+
+    public static void writeToCustomers(String username, Portfolio portfolio, double money, boolean derivativeAccount) throws IOException {
+        FileWriter fileWriter = new FileWriter("src/TXT Files/customers.txt", true);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        bufferedWriter.write("\n"+username+"\t"+portfolio+"\t"+portfolio.displayStockList()+"\t"+money+"\t"+derivativeAccount+"\t");
+        bufferedWriter.close();
+    }
+
 }

@@ -28,6 +28,11 @@ public class Customer extends Person {
         return money;
     }
 
+    public boolean getIsEligableForDerivative()
+    {
+        return isEligibleForDerivative;
+    }
+
     public void setMoney(double money) {
         this.money = money;
     }
