@@ -34,7 +34,7 @@ public class InfoWindow extends JDialog {
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
         //fill out details
-        textArea.setText(DisplayFacade.getDetailedInfo());
+        textArea.setText(DisplayAdaptor.getDetailedInfo());
     }
 
     private void onCancel() {

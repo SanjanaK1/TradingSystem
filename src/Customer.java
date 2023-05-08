@@ -1,6 +1,4 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Customer extends Person {
 
@@ -96,7 +94,7 @@ public class Customer extends Person {
         int numOfStocks = this.getPortfolio().getStockListCount();
         Stock[] stockArray = this.getPortfolio().getStockArray();
         String[][] stockListInformation =
-                new String[numOfStocks][DisplayFacade.numAttributesToDisplay];
+                new String[numOfStocks][DisplayAdaptor.numAttributesToDisplay];
         for (int i = 0; i < numOfStocks; i++) {
             stockListInformation[i][0] = stockArray[i].getName(); // Name of Stock
             stockListInformation[i][1] = String.valueOf(stockArray[i].getCurrentPrice()); // Current Price at Market);

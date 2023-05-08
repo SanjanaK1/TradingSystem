@@ -105,7 +105,7 @@ public class LoginWindow extends JFrame {
         String password = passwordTextField.getText();
         try{
             if (Security.login(username, password)) {
-                if (DisplayFacade.hasCustomer()) GUI.tradeWindow();//customer logging in
+                if (DisplayAdaptor.hasCustomer()) GUI.tradeWindow();//customer logging in
                 //close login screen
                 dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
             }

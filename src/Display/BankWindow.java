@@ -50,7 +50,7 @@ public class BankWindow {
             return;
         }
 
-        if (DisplayFacade.withdraw(d)) {
+        if (DisplayAdaptor.withdraw(d)) {
             //success
         } else {
             GUI.invalidPopup("Cannot Withdraw amount");
@@ -68,7 +68,7 @@ public class BankWindow {
             return;
         }
 
-        if (DisplayFacade.deposit(d)) {
+        if (DisplayAdaptor.deposit(d)) {
             //success
         } else {
             GUI.invalidPopup("Cannot Deposit amount");
@@ -76,7 +76,7 @@ public class BankWindow {
     }
 
     private void update() {
-        amountLabel.setText(DisplayFacade.getLiquid());
+        amountLabel.setText(DisplayAdaptor.getLiquid());
     }
 
     private void createUIComponents() {

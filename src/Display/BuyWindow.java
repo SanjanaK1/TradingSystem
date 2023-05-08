@@ -38,14 +38,14 @@ public class BuyWindow {
     }
 
     private void update() {
-        stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
-        comboBox1.setModel(new DefaultComboBoxModel(DisplayFacade.getAllStockNames()));
+        stockTable.setModel(new DisplayTableModel(DisplayAdaptor.getTableData(), DisplayAdaptor.getTableHeader()));
+        comboBox1.setModel(new DefaultComboBoxModel(DisplayAdaptor.getAllStockNames()));
     }
 
     private void buy() {
         GUI.hideBuyWindow();
 
-        if(DisplayFacade.buy(comboBox1.getSelectedIndex(), (Integer)spinner1.getValue())){
+        if(DisplayAdaptor.buy(comboBox1.getSelectedIndex(), (Integer)spinner1.getValue())){
             //nothing
         } else {
             GUI.invalidPopup("Buy Failed");

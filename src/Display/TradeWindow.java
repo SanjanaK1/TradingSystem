@@ -1,8 +1,4 @@
 import javax.swing.*;
-import javax.swing.table.DefaultTableColumnModel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,10 +34,10 @@ public class TradeWindow {
 
     private void initComponents() {
         //populate labels
-        accountNameLabel.setText(DisplayFacade.getUserName());
-        totalAssetLabel.setText(DisplayFacade.getTotal());
-        liquidAssetLabel.setText(DisplayFacade.getLiquid());
-        stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
+        accountNameLabel.setText(DisplayAdaptor.getUserName());
+        totalAssetLabel.setText(DisplayAdaptor.getTotal());
+        liquidAssetLabel.setText(DisplayAdaptor.getLiquid());
+        stockTable.setModel(new DisplayTableModel(DisplayAdaptor.getTableData(), DisplayAdaptor.getTableHeader()));
 
         moneyLabel.setIcon(IconCreator.createImageIcon("rsc/money2.gif", "money"));
 
@@ -92,10 +88,10 @@ public class TradeWindow {
     }
 
     public void update() {
-        accountNameLabel.setText(DisplayFacade.getUserName());
-        totalAssetLabel.setText(DisplayFacade.getTotal());
-        liquidAssetLabel.setText(DisplayFacade.getLiquid());
-        stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
+        accountNameLabel.setText(DisplayAdaptor.getUserName());
+        totalAssetLabel.setText(DisplayAdaptor.getTotal());
+        liquidAssetLabel.setText(DisplayAdaptor.getLiquid());
+        stockTable.setModel(new DisplayTableModel(DisplayAdaptor.getTableData(), DisplayAdaptor.getTableHeader()));
     }
 
 }

@@ -1,11 +1,6 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-public class DisplayFacade {
+public class DisplayAdaptor {
     private static Customer c;
     public static int numAttributesToDisplay = 6;
     public static String[] tableHeaders = new String[]{"Stock Name", "Current Value ($)", "Number Owned", "Total Value ($)", "Bought Value ($)", "Delta ($)"};
@@ -20,17 +15,17 @@ public class DisplayFacade {
     }
 
     public static String getUserName(){
-        if (DisplayFacade.c != null) return c.getName();
+        if (DisplayAdaptor.c != null) return c.getName();
         return "ACCOUNT NOT FOUND";
     }
 
     public static String getTotal() {
-        if (DisplayFacade.c != null) return Double.toString(c.getNetValue());
+        if (DisplayAdaptor.c != null) return Double.toString(c.getNetValue());
         return "0$";
     }
 
     public static String getLiquid() {
-        if (DisplayFacade.c != null) return Double.toString(c.getMoney());
+        if (DisplayAdaptor.c != null) return Double.toString(c.getMoney());
         return "0$";
     }
 
@@ -54,7 +49,7 @@ public class DisplayFacade {
     }
 
     public static void setCustomer(Customer c) {
-        DisplayFacade.c = c;
+        DisplayAdaptor.c = c;
     }
 
     public static boolean buy(Stock s, int quantity) {
@@ -108,7 +103,7 @@ public class DisplayFacade {
 
     public static String getDetailedInfo() {
         //TODO
-        if (DisplayFacade.c == null) return "ACCOUNT NOT FOUND";
+        if (DisplayAdaptor.c == null) return "ACCOUNT NOT FOUND";
         return "Account Value: " + getTotal()
                 + "\nLiquid Assets: " + getLiquid()
                 + "\nUnrealized gains: " + 0 //TODO Delta Here

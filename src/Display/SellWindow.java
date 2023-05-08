@@ -40,7 +40,7 @@ public class SellWindow {
     private void sell() {
         GUI.hideSellWindow();
 
-        if(DisplayFacade.sell(comboBox1.getSelectedIndex(), (Integer)spinner1.getValue())){
+        if(DisplayAdaptor.sell(comboBox1.getSelectedIndex(), (Integer)spinner1.getValue())){
             //nothing
         } else {
             GUI.invalidPopup("Sell Failed");
@@ -48,7 +48,7 @@ public class SellWindow {
     }
 
     private void update(){
-        stockTable.setModel(new DisplayTableModel(DisplayFacade.getTableData(), DisplayFacade.getTableHeader()));
-        comboBox1.setModel(new DefaultComboBoxModel(DisplayFacade.getOwnedStockNames()));
+        stockTable.setModel(new DisplayTableModel(DisplayAdaptor.getTableData(), DisplayAdaptor.getTableHeader()));
+        comboBox1.setModel(new DefaultComboBoxModel(DisplayAdaptor.getOwnedStockNames()));
     }
 }

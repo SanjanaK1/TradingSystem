@@ -41,7 +41,7 @@ public class ManagerWindow {
             openOtherOptions();
         });
 
-        portfolioComboBox.setModel(new DefaultComboBoxModel(DisplayFacade.getAllCustomers()));
+        portfolioComboBox.setModel(new DefaultComboBoxModel(DisplayAdaptor.getAllCustomers()));
         stockTable.putClientProperty("terminateEditOnFocusLost", true);
 
         update();
@@ -54,12 +54,12 @@ public class ManagerWindow {
 
     private void openCustomer() {
         Customer c = (Customer) portfolioComboBox.getSelectedItem();
-        DisplayFacade.setCustomer(c);
+        DisplayAdaptor.setCustomer(c);
         GUI.tradeWindow(false);
     }
 
     private void save() {
-       if(DisplayFacade.setStockFile(((StockManagerTableModel)stockTable.getModel()).getCells())){
+       if(DisplayAdaptor.setStockFile(((StockManagerTableModel)stockTable.getModel()).getCells())){
            JOptionPane.showMessageDialog(panel.getParent(), "Stocks updated successfully " +
                    "(on restart)");
           /* for(String [] string : ((StockManagerTableModel)stockTable.getModel()).getCells())
@@ -76,6 +76,6 @@ public class ManagerWindow {
     }
 
     private void update() {
-        stockTable.setModel(new StockManagerTableModel(DisplayFacade.getStockFile(), DisplayFacade.getStockFileHeader()));
+        stockTable.setModel(new StockManagerTableModel(DisplayAdaptor.getStockFile(), DisplayAdaptor.getStockFileHeader()));
     }
 }
