@@ -44,7 +44,7 @@ public class Security
 
     public static boolean createAccount(String username, String password) throws IOException {
         //Read in usernames and passwords from text file
-        if (login(username, password) || doesUserExist(username)) {
+        if (doesUserExist(username)) {
             JOptionPane.showMessageDialog(null,"User already exists");
             return false;
         }
