@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Map;
 
 public class MarketSystemFacade {
@@ -68,6 +69,7 @@ public class MarketSystemFacade {
     public static boolean depositMoney(Customer c, double money) {
         if (money >= 0) {
             c.setMoney(c.getMoney() + money);
+            FileHandler.updateCustomer(c);
             return true;
         }
         return false;
@@ -76,6 +78,7 @@ public class MarketSystemFacade {
     public static boolean withdrawMoney(Customer c, double money) {
         if (c.getMoney() >= money) {
             c.setMoney(c.getMoney() - money);
+            FileHandler.updateCustomer(c);
             return true;
         }
         return false;
