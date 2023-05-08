@@ -18,6 +18,7 @@ public class StockMarket {
         if (isStockInMarket && stockListOnMarket.get(s) >= quantityBought) {
             int currentStockQuantity =  stockListOnMarket.get(s);
             stockListOnMarket.replace(s, currentStockQuantity - quantityBought);
+            s.setQuantity(currentStockQuantity - quantityBought);
             isSuccessfulPurchase = true;
         }
         return isSuccessfulPurchase;
@@ -29,6 +30,7 @@ public class StockMarket {
         if (isStockInMarket) {
             int currentStockQuantity =  stockListOnMarket.get(s);
             stockListOnMarket.replace(s, currentStockQuantity + quantitySold);
+            s.setQuantity(currentStockQuantity + quantitySold);
             isSuccessfulSell = true;
         }
         else {
