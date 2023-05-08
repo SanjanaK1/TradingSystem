@@ -28,7 +28,7 @@ public class Security
                 }
                 return true;
             } else {
-                System.out.println("Wrong password");
+                JOptionPane.showMessageDialog(null,"Wrong password");
                 return false;
             }
 
@@ -45,7 +45,7 @@ public class Security
     public static boolean createAccount(String username, String password) throws IOException {
         //Read in usernames and passwords from text file
         if (login(username, password) || doesUserExist(username)) {
-            System.out.println("user exists already");
+            JOptionPane.showMessageDialog(null,"User already exists");
             return false;
         }
         else{
