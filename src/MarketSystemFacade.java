@@ -49,7 +49,10 @@ public class MarketSystemFacade {
             if (isSuccessfulSell) {
                 isStockSold = c.sellStock(s, quantityToSell);
                 FileHandler.updateCustomer(c);
-                FileHandler.updateStockMarketQuantity(s, StockMarket.getStockByName(s.getName()).getQuantity() + quantityToSell);
+                if (StockMarket.getStockByName(s.getName()) != null) {
+                    FileHandler.updateStockMarketQuantity(s, StockMarket.getStockByName(s.getName()).getQuantity() + quantityToSell);
+                }
+
             }
         }
         return isStockSold;

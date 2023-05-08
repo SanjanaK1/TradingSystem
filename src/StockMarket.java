@@ -31,6 +31,10 @@ public class StockMarket {
             stockListOnMarket.replace(s, currentStockQuantity + quantitySold);
             isSuccessfulSell = true;
         }
+        else {
+            //not in stocks.txt
+            isSuccessfulSell = true;
+        }
 
         return isSuccessfulSell;
     }
