@@ -21,8 +21,10 @@ public class BasePortfolio implements Portfolio, Observer {
 
     public void addStock(Stock s, int quantityAdded) {
         if (quantityAdded > 0) {
-            if (!isStockInList(s.getName())) {
+            if (this.stockList.containsKey(s)) {
                 s.addObserver(this);
+                this.stockList.put(s, this.stockList.get(s) + quantityAdded);
+            } else {
                 this.stockList.put(s, quantityAdded);
             }
         }
@@ -157,7 +159,7 @@ public class BasePortfolio implements Portfolio, Observer {
         String display = "[";
         Stock[] stockArray = getStockArray();
         for (int i = 0; i < stockArray.length; i++) {
-            if (i != 0 && i !=  stockArray.length -1) {
+            if (i != 0) {
                 display += ";";
             }
             String name = stockArray[i].getName();
@@ -167,6 +169,6 @@ public class BasePortfolio implements Portfolio, Observer {
             display += "(" + name + "," +  quantity + "," + datePurchased + "," + boughtPrice + ")";
         }
         display += "]";
-        return display; //todo
+        return display;
     }
 }
