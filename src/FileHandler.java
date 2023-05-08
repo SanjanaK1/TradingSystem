@@ -98,7 +98,7 @@ public class FileHandler {
                 String name = tokens[0];
                 double price = Double.parseDouble(tokens[1]);
                 int amountOfStock = Integer.parseInt(tokens[2]);
-                Stock stock = new Stock(name,price, -1, null, null, amountOfStock);
+                Stock stock = new Stock(name,price, 0, null, null, amountOfStock);
                 StockMarket.addStock(stock, amountOfStock);
             }
         } catch (IOException e) {
