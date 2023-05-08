@@ -53,7 +53,14 @@ public class FileHandler {
                 int quantity = Integer.parseInt(elementOfStock[1]);
                 Date date = Date.parseDate(elementOfStock[2]);
                 double boughtPrice = Double.parseDouble(elementOfStock[3].substring(0, elementOfStock[3].indexOf(")"))); // skips over close parenthesis
-                Stock s = new Stock(name, StockMarket.getStockByName(name).getCurrentPrice(), boughtPrice, date, null, StockMarket.getStockByName(name).getQuantity());
+                Stock s;
+                if (StockMarket.getStockByName(name) == null) {
+                    s = new Stock(name, 0, boughtPrice, date, null, 0);
+                }
+                else {
+                    s = new Stock(name, StockMarket.getStockByName(name).getCurrentPrice(), boughtPrice, date,
+                            null, StockMarket.getStockByName(name).getQuantity());
+                }
                 p.addStock(s, quantity);
             }
         }
