@@ -2,7 +2,7 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-public class BasePortfolio implements Portfolio, Observer {
+public class BasePortfolio implements Portfolio {
 
     private Map<Stock, Integer> stockList; //mapping between Stocks and their amounts.
 
@@ -81,7 +81,7 @@ public class BasePortfolio implements Portfolio, Observer {
         double value = 0;
         Stock[] stockArray = getStockArray();
         for (int i = 0; i < stockArray.length; i++) {
-            // value accounts for quantity times stock price net change.
+            // value accounts for quantity times current stock price.
                 value += stockArray[i].getCurrentPrice() * this.stockList.get(stockArray[i]);
         }
         return value;
@@ -136,6 +136,16 @@ public class BasePortfolio implements Portfolio, Observer {
 
     public int getStockListCount() {
         return this.stockList.size();
+    }
+
+    @Override
+    public double getUnrealizedGains() {
+        double unrealizedGains = 0;
+        Stock[] stockArray = getStockArray();
+        for (int i = 0; i < stockArray.length; i++) {
+            unrealizedGains += stockArray[i].getNetChange() * getStockQuantity(stockArray[i]);
+        }
+        return unrealizedGains;
     }
 
     public int[] getStockAmountsOwned() {

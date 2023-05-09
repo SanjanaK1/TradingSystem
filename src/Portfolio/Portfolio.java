@@ -1,6 +1,7 @@
 import java.util.Map;
+import java.util.Observer;
 
-public interface Portfolio {
+public interface Portfolio extends Observer {
 
     String makePortfolio();
 
@@ -13,6 +14,8 @@ public interface Portfolio {
     double getStockListValue();
 
     int getStockListCount();
+
+    double getUnrealizedGains();
 
     Stock[] getStockArray();
 

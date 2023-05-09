@@ -46,6 +46,7 @@ public class Stock extends Observable implements Tradeable {
     }
 
     public double getNetChange() {
+        System.out.println("current Price: " + currentPrice + "\t Bought: "  + boughtPrice);
         return currentPrice - boughtPrice;
     }
 
